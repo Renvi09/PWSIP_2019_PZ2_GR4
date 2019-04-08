@@ -13,6 +13,20 @@ public class SoundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+    //Funkcja pozwalajaca na tworzenie nowych zrodel audio
+    public AudioSource AddAudio(AudioClip clip, bool loop, bool playAwake, float vol)
+    {
+
+        AudioSource newAudioSource = gameObject.AddComponent<AudioSource>();
+
+        newAudioSource.clip = clip;
+        newAudioSource.loop = loop;
+        newAudioSource.playOnAwake = playAwake;
+        newAudioSource.volume = vol;
+
+        return newAudioSource;
+
     }
 }
