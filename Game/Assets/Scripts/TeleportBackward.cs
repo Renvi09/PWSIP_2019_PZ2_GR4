@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class TeleportBackward : MonoBehaviour
 {
-    
+    public int backward;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +16,4 @@ public class GameManager : MonoBehaviour
     {
         
     }
-
-   
-
 }
