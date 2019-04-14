@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TeleportBackward : MonoBehaviour
 {
-    public int backward;
+    public Vector3 backward;
     // Start is called before the first frame update
     void Start()
     {
