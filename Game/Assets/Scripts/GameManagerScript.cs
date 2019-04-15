@@ -43,9 +43,11 @@ public class GameManagerScript : MonoBehaviour
               map,
               new Vector3(i*20, 0, 0),
               this.gameObject.transform.rotation);
-          
-            room.GetComponentInChildren<TeleportForward>().forward = LevelTeleportList[i+1] - new Vector3(8,0,0);
-            room.GetComponentInChildren<TeleportBackward>().backward = LevelTeleportList[i-1] + new Vector3(8, 0, 0);
+
+            room.GetComponentInChildren<TeleportForward>().forward = LevelTeleportList[i - 1] - new Vector3(8, 0, 0);
+            room.GetComponentInChildren<TeleportForward>().currentLevel = i;
+            room.GetComponentInChildren<TeleportBackward>().backward = LevelTeleportList[i + 1] + new Vector3(8, 0, 0);
+            room.GetComponentInChildren<TeleportBackward>().currentLevel = i;
             room.transform.position =(Vector2)LevelTeleportList[i];
             i++;
           
