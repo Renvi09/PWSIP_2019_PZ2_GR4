@@ -6,7 +6,7 @@ public class PlayerStats : MonoBehaviour
 {
 
     //Zmienne
-    public float movementSpeed { get; set; } = 1;
+    public float movementSpeed { get; set; } = 3;
     public float healthPool { get; set; } = 1;
     public float currentHealth { get; set; } = 1;
 
