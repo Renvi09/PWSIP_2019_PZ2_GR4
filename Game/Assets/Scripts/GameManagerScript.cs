@@ -6,13 +6,13 @@ public class GameManagerScript : MonoBehaviour
 {
     public List<GameObject> LevelListNormal;
     public List<GameObject> LevelListBoss;
-    private List<Vector3> LevelTeleportList;
+    public List<Vector3> LevelTeleportList;
 
     private int LevelSize = 6;
     // Start is called before the first frame update
     void Start()
     {
-       MakePointList();
+       
        MakeDungeon();
       
     }
@@ -24,8 +24,8 @@ public class GameManagerScript : MonoBehaviour
     }
     public void MakeDungeon()
     {
+        MakePointList();
         int i = 0;
-        Vector3 possiton = new Vector3(0, 0, 0);
         List<GameObject> CurrentLevelList = new List<GameObject>();
         for(int j =1;j<=LevelSize;j++)
         {
