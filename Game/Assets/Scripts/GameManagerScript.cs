@@ -59,10 +59,11 @@ public class GameManagerScript : MonoBehaviour
     private void MakePointList()
     {
         LevelTeleportList = new List<Vector3>();
-        LevelTeleportList.Add(new Vector3(0, 0, 0));
-        for (int i = 0; i <= LevelSize + 1; i++)
+        LevelTeleportList.Add(new Vector3(-8, 0, 0));
+        for (int i = 0; i <= LevelSize; i++)
         {
-            LevelTeleportList.Add(new Vector3(100*i,100,0));
+            LevelTeleportList.Add(new Vector3(100 * i, 100, 0));
         }
+        LevelTeleportList.Add(new Vector3(8, 0, 0));
     }
 }
