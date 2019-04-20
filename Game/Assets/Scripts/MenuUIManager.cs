@@ -8,7 +8,7 @@ public class MenuUIManager : MonoBehaviour
 
     public void Play()
     {
-        SceneManager.LoadScene("");
+        SceneManager.LoadScene("Intro");
     }
 
     public void Options()
