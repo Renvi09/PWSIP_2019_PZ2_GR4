@@ -13,7 +13,7 @@ public class MenuUIManager : MonoBehaviour
 
     public void Options()
     {
-        SceneManager.LoadScene("");
+        SceneManager.LoadScene("Options");
     }
 
     public void Quit()
