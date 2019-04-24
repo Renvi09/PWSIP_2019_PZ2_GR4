@@ -14,7 +14,7 @@ public class PlayerStats : MonoBehaviour
     private float movementSpeed;
     private float maxHealth;
     private float currentHealth;
-
+    private float gold;
     void Start()
     {
         maxHealth = 100;
@@ -65,6 +65,8 @@ public class PlayerStats : MonoBehaviour
             {
                 currentHealth= value;
             }
+
+            //Ustawienie HealthBarFill
             if (currentHealth == 0)
 
             {
@@ -89,6 +91,20 @@ public class PlayerStats : MonoBehaviour
         set
         {
             maxHealth = value;
+        }
+    }
+
+    public float Gold
+    {
+        get
+        {
+            return gold;
+        }
+
+        set
+        {
+            
+            gold = value;
         }
     }
 }

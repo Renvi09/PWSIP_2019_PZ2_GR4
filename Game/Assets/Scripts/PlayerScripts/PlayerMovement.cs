@@ -35,7 +35,14 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             Debug.Log(playerStats.CurrentHealth);
-            playerStats.CurrentHealth = 5 + i;
+            playerStats.CurrentHealth += 5;
+            i++;
+
+        }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            Debug.Log(playerStats.CurrentHealth);
+            playerStats.CurrentHealth -= 5 ;
             i++;
 
         }
