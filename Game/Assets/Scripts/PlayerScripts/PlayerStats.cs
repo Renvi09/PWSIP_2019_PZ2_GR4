@@ -1,36 +1,94 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
 
     //Zmienne
-    public float movementSpeed { get; set; } = 3;
-    public float healthPool { get; set; } = 1;
-    public float currentHealth { get; set; } = 1;
+    public Text healthBarText;
+    private Image healthBarImage;
+    public GameObject HealthBar;
+    private float currentHealthBarFill;
+    private float movementSpeed;
+    private float maxHealth;
+    private float currentHealth;
 
-    // Start is called before the first frame update
     void Start()
     {
-        
-    }
+        maxHealth = 100;
+        healthBarImage = HealthBar.GetComponent<Image>();
 
-    // Update is called once per frame
+    }
     void Update()
     {
-       
+        if (healthBarImage.fillAmount != currentHealthBarFill)
+        {
+            healthBarImage.fillAmount = currentHealthBarFill;
+        }
+    
     }
-    public void ToBeWounded(float ammountOfDamage)
+    public float MovementSpeed
     {
-        currentHealth -= ammountOfDamage;
+        get
+        {
+            return movementSpeed;
+        }
 
+        set
+        {
+           
+            movementSpeed = value;
+        }
     }
-    public void SetHealthPool(float newHealPool)
+
+  
+
+    public float CurrentHealth
     {
-        healthPool = newHealPool;
-       
+        get
+        {
+            return currentHealth;
+        }
+        set
+        {
+            if (value > maxHealth)
+            {
+                currentHealth = maxHealth;
+            }
+            else if (value < 0)
+            {
+                currentHealth = 0f;
+            }
+            else
+            {
+                currentHealth= value;
+            }
+            if (currentHealth == 0)
+
+            {
+                currentHealthBarFill = 0;
+            }
+            else
+            {
+                Debug.Log(currentHealth);
+                currentHealthBarFill = currentHealth / maxHealth;
+            }
+            healthBarText.text = currentHealth + " / " + maxHealth;
+        }
     }
 
+    public float MaxHealth
+    {
+        get
+        {
+            return maxHealth;
+        }
 
+        set
+        {
+            maxHealth = value;
+        }
+    }
 }
