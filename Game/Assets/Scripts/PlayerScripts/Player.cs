@@ -2,14 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class Player : MonoBehaviour
 {
-    private int i;
+   
     private Animator playerAnimator;
     private Rigidbody2D playerRigidbody2D;
     private Vector2 direction;
     // Start is called before the first frame update
     PlayerStats playerStats;
+    float timer;
+  
+    public Vector2 target;
+    public float timeBetweenBullets = 1f;
+    
     private bool isMoving
     {
         get
@@ -31,34 +36,55 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //debug
+        timer += Time.deltaTime;
+       
         if (Input.GetKeyDown(KeyCode.P))
         {
             Debug.Log(playerStats.CurrentHealth);
             playerStats.CurrentHealth += 5;
-            i++;
+            
 
         }
         if (Input.GetKeyDown(KeyCode.O))
         {
             Debug.Log(playerStats.CurrentHealth);
             playerStats.CurrentHealth -= 5 ;
-            i++;
+          
 
         }
+        
         AnimationLayerControl();
     }
 
     private void FixedUpdate()
     {
-
+        PlayerAtack();
         PlayerMove();
     }
-
+    public void xd()
+    {
+        Debug.Log("xd");
+    }
     private void PlayerAtack()
     {
+        if ((Input.GetMouseButton(0) && timer > timeBetweenBullets) || (Input.GetMouseButtonDown(0) && timer>timeBetweenBullets))
+        {
+            timer = 0f;
+            var pos = Input.mousePosition;
+            pos.z = transform.position.z - Camera.main.transform.position.z;
+            pos = Camera.main.ScreenToWorldPoint(pos);
+            var rotation = Quaternion.FromToRotation(Vector3.up, pos - transform.position);
 
+            var bullet = (GameObject)Instantiate(
+                playerStats.SpellList[0],
+               transform.position,
+                rotation);
+
+            bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.up * 5;
+            Destroy(bullet, 2.0f);
+        }
     }
+
 
     private void AnimationLayerControl()
     {

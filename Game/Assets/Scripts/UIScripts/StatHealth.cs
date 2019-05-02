@@ -4,9 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class StatHealth : MonoBehaviour
-{
-    private Image healthBarImage;
-    public GameObject HealthBar;
+{ 
     private float currentFill;
     public float maxValue { get; set; }
 
@@ -19,11 +17,11 @@ public class StatHealth : MonoBehaviour
 
         set
         {
-            if(value>maxValue)
+            if (value > maxValue)
             {
                 currentValue = maxValue;
             }
-            else if(value<0)
+            else if (value < 0)
             {
                 currentValue = 0f;
             }
@@ -31,7 +29,9 @@ public class StatHealth : MonoBehaviour
             {
                 currentValue = value;
             }
-            currentFill = maxValue / currentValue; 
+
+            currentFill = maxValue / currentValue;
+            Debug.Log(currentFill);
         }
 
     }
@@ -40,12 +40,13 @@ public class StatHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        healthBarImage = GetComponent<Image>();
+        currentValue = 50;
+        maxValue = 50;
     }
 
     // Update is called once per frame
     void Update()
     {
-        healthBarImage.fillAmount = currentFill;
+       
     }
 }

@@ -15,6 +15,7 @@ public class PlayerStats : MonoBehaviour
     private float maxHealth;
     private float currentHealth;
     private float gold;
+    public List<GameObject> SpellList;
     void Start()
     {
         maxHealth = 100;

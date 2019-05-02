@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GameManagerScript
   - LevelText
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Targetable
   - 
   - 
   - 
@@ -42,4 +43,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2115432447
+    locked: 0
+  - name: Items
+    uniqueID: 821488341
+    locked: 0
+  - name: New Layer
+    uniqueID: 2120088619
     locked: 0
