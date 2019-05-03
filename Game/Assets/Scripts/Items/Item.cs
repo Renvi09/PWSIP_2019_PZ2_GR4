@@ -19,7 +19,7 @@ public abstract class Item : ScriptableObject
         }
     }
 
-    public int StackSize
+    public int ThisStackSize
     {
         get
         {
@@ -27,7 +27,7 @@ public abstract class Item : ScriptableObject
         }        
     }
 
-    public SlotScript Slot
+    public SlotScript ThisSlot
     {
         get
         {
@@ -39,5 +39,11 @@ public abstract class Item : ScriptableObject
             slotscript = value;
         }
     }
-
+    public void Remove()
+    {
+        if (ThisSlot!=null)
+        {
+            ThisSlot.RemoveItem(this);
+        }
+    }
 }

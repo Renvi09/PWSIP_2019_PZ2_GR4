@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d33472e7778d4c64d9d521845a25684c, type: 3}
-  m_Name: Bag
+  m_Script: {fileID: 11500000, guid: 416020d2dfef8694e949a7d6bb8e6210, type: 3}
+  m_Name: HpPot
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 2cdc2a922f7f44f4a86ebc360b4f181d, type: 3}
-  stackSize: 0
-  bagPrefab: {fileID: 2373159216485364806, guid: 4497e7b0cd66eeb46a13d49dec013fa2,
-    type: 3}
+  icon: {fileID: 21300000, guid: 1ae8b6a0c6b191b4990360b2f98a45c4, type: 3}
+  stackSize: 5
+  heal: 20

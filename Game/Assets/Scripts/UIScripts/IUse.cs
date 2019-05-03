@@ -5,12 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.Scripts.UIScripts
-{
-    interface IUse
+    public  interface IUse
     {
         Sprite Icon { get; }
         void Use();
     }
    
-}
+

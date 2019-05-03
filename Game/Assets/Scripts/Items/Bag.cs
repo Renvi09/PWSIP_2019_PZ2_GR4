@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.UIScripts;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,6 +28,7 @@ public class Bag : Item, IUse
     {
         if (InventoryScript.Instance.CanAddBags)
         {
+            Remove();
             bagScript = Instantiate(bagPrefab, InventoryScript.Instance.transform).GetComponent<BagScript>();
             bagScript.AddSlots(slots);
             InventoryScript.Instance.AddBag(this);

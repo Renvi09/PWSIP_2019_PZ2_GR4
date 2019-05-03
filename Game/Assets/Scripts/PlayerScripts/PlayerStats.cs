@@ -6,6 +6,23 @@ using UnityEngine.UI;
 public class PlayerStats : MonoBehaviour
 {
 
+
+       private static PlayerStats instance;
+    //zwraca  instancje
+    public static PlayerStats Instance
+    {
+        get
+        {
+            
+            if(instance==null)
+            {
+                instance = FindObjectOfType<PlayerStats>();
+            }
+            return instance;
+        }
+
+       
+    }
     //Zmienne
     public Text healthBarText;
     private Image healthBarImage;
