@@ -84,7 +84,11 @@ public class SlotScript : MonoBehaviour,IPointerClickHandler,IClicable
 
     public void OnPointerClick(PointerEventData eventData)
     {
-       if(eventData.button ==PointerEventData.InputButton.Right)
+        if(eventData.button ==PointerEventData.InputButton.Left)
+        {
+
+        }
+        if(eventData.button ==PointerEventData.InputButton.Right)
         {
             UseItem();
         }
@@ -100,7 +104,7 @@ public class SlotScript : MonoBehaviour,IPointerClickHandler,IClicable
     }
     private void Awake()
     {
-        //przy kazdej zminia stacku itemow dopisana jest fukcja aktualicji stakow 
+        //przypisanie dodakowych fukcji stakowi itemo przy aktualizacji
         items.OnPop += new UpdateStackEvent(UpdatinSlot);
         items.OnPush += new UpdateStackEvent(UpdatinSlot);
         items.OnClear += new UpdateStackEvent(UpdatinSlot);

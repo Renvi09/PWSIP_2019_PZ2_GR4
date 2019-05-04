@@ -8,25 +8,41 @@ using UnityEngine.UI;
 
 public class ActionButton : MonoBehaviour, IPointerClickHandler
 {
-    private IUse useable;
-    public Button button { get; private set; }
+    public IUse ThisIUse { get; set; }
+    public Button ThisButton { get; private set; }
+
+    public Image Icon
+    {
+        get
+        {
+            return icon;
+        }
+
+        set
+        {
+            icon = value;
+        }
+    }
+
+    [SerializeField]
+    private Image icon;
     // Start is called before the first frame update
     void Start()
     {
-        
+        ThisButton = GetComponent<Button>();
+        ThisButton.onClick.AddListener(OnClick);
     }
 
     // Update is called once per frame
     void Update()
     {
-        button = GetComponent<Button>();
-        button.onClick.AddListener(OnClick);
+      
     }
     public void OnClick()
     {
-        if(useable!=null)
+        if(ThisIUse!=null)
         {
-            useable.Use();
+            ThisIUse.Use();
         }
     }
         

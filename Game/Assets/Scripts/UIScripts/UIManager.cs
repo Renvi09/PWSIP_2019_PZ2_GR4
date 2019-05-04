@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,7 +25,7 @@ public class UIManager : MonoBehaviour
     }
     
     [SerializeField]
-    private Button[] abbilityButtons;
+    private ActionButton[] abbilityButtons;
    
 
     
@@ -32,19 +33,19 @@ public class UIManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            OnClickButton(0);
+           // OnClickButton(0);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            OnClickButton(2);
+          //  OnClickButton(2);
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            OnClickButton(3);
+         //   OnClickButton(3);
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            OnClickButton(4);
+          //  OnClickButton(4);
         }
         if(Input.GetKeyDown(KeyCode.B))
         {
@@ -73,8 +74,20 @@ public class UIManager : MonoBehaviour
         }
     }
     //uzywa umiejetosci 1-4
-    private void OnClickButton(int buttonIndex)
+    private void OnClickButton(string buttonName)
     {
-        abbilityButtons[buttonIndex].onClick.Invoke();
+        Array.Find(abbilityButtons, x => x.gameObject.name == buttonName).ThisButton.onClick.Invoke();
+    }
+    public void SetUsable(ActionButton button, IUse useable)
+    {
+        button.Icon.sprite = useable.Icon;
+        button.Icon.color = Color.white;
+        button.ThisIUse = useable;
+
+    }
+    public void OpenClose(CanvasGroup canvasGroup)
+    {
+        canvasGroup.alpha = canvasGroup.alpha > 0 ? 0 : 1;
+        canvasGroup.blocksRaycasts = canvasGroup.blocksRaycasts == true ? false : true;
     }
 }
