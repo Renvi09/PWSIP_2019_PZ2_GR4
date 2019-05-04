@@ -78,13 +78,7 @@ public class UIManager : MonoBehaviour
     {
         Array.Find(abbilityButtons, x => x.gameObject.name == buttonName).ThisButton.onClick.Invoke();
     }
-    public void SetUsable(ActionButton button, IUse useable)
-    {
-        button.Icon.sprite = useable.Icon;
-        button.Icon.color = Color.white;
-        button.ThisIUse = useable;
-
-    }
+ 
     public void OpenClose(CanvasGroup canvasGroup)
     {
         canvasGroup.alpha = canvasGroup.alpha > 0 ? 0 : 1;

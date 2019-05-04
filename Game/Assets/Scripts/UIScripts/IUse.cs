@@ -7,7 +7,7 @@ using UnityEngine;
 
     public  interface IUse
     {
-        Sprite Icon { get; }
+       
         void Use();
     }
    

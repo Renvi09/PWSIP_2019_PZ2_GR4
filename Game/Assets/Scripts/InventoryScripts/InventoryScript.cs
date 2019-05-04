@@ -20,6 +20,8 @@ public class InventoryScript : MonoBehaviour
 
        
     }
+    private SlotScript fromSlot;
+
     //sprwadza czy limit bagow zostal spelniony
     public bool CanAddBags
     {
@@ -28,6 +30,24 @@ public class InventoryScript : MonoBehaviour
             return bags.Count < 4;
         }
 
+    }
+
+    public SlotScript FromSlot
+    {
+        get
+        {
+            return fromSlot;
+        }
+
+        set
+        {
+            fromSlot = value;
+            if (value != null)
+            {
+                fromSlot.ThisIcon.color = Color.yellow;
+            }
+            fromSlot = value;
+        }
     }
 
     [SerializeField]

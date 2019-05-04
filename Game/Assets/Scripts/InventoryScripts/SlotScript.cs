@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SlotScript : MonoBehaviour,IPointerClickHandler,IClicable
+public class SlotScript : MonoBehaviour, IPointerClickHandler, IClicable
 {
     private ObservableStack<Item> items = new ObservableStack<Item>();
     [SerializeField]
@@ -21,19 +21,34 @@ public class SlotScript : MonoBehaviour,IPointerClickHandler,IClicable
             return items.Count == 0;
         }
     }
+    public bool isFull
+    {
+        get
+        {
+
+            if (isEmpty || ThisCount < ThisItem.ThisStackSize)
+            {
+                return false;
+            }
+            return true;
+
+        }
+    }
+
+
 
     public Item ThisItem
     {
         get
         {
-            if(!isEmpty)
+            if (!isEmpty)
             {
                 return items.Peek();
             }
             return null;
         }
 
-      
+
     }
 
     public Image ThisIcon
@@ -53,7 +68,7 @@ public class SlotScript : MonoBehaviour,IPointerClickHandler,IClicable
     {
         get
         {
-           return items.Count;
+            return items.Count;
         }
     }
 
@@ -69,14 +84,14 @@ public class SlotScript : MonoBehaviour,IPointerClickHandler,IClicable
     public bool AddItem(Item item)
     {
         items.Push(item);
-        icon.sprite = item.Icon;
+        icon.sprite = item.ThisIcon;
         icon.color = Color.white;
         item.ThisSlot = this;
         return true;
     }
     public void RemoveItem(Item item)
     {
-        if(!isEmpty)
+        if (!isEmpty)
         {
             items.Pop();
         }
@@ -84,11 +99,25 @@ public class SlotScript : MonoBehaviour,IPointerClickHandler,IClicable
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(eventData.button ==PointerEventData.InputButton.Left)
+        if (eventData.button == PointerEventData.InputButton.Left)
         {
-
+            //jesli reka jest pusta podnosci item z eq 
+            if (InventoryScript.Instance.FromSlot == null && !isEmpty)
+            {
+                HandScript.Instance.TakeMoveable(ThisItem as IMove);
+                InventoryScript.Instance.FromSlot = this;
+            }
+            //jesli jest cos na rece odklada go
+            else if (InventoryScript.Instance.FromSlot != null)
+            {
+                if (PutItemBack() ||SwapItems(InventoryScript.Instance.FromSlot) || AddItems(InventoryScript.Instance.FromSlot.items))
+                {
+                    HandScript.Instance.Drop();
+                    InventoryScript.Instance.FromSlot = null;
+                }
+            }
         }
-        if(eventData.button ==PointerEventData.InputButton.Right)
+        if (eventData.button == PointerEventData.InputButton.Right)
         {
             UseItem();
         }
@@ -102,6 +131,7 @@ public class SlotScript : MonoBehaviour,IPointerClickHandler,IClicable
         }
 
     }
+
     private void Awake()
     {
         //przypisanie dodakowych fukcji stakowi itemo przy aktualizacji
@@ -115,7 +145,7 @@ public class SlotScript : MonoBehaviour,IPointerClickHandler,IClicable
     }
     public bool StackItem(Item item)
     {
-        if (!isEmpty&&item.name==ThisItem.name && items.Count<ThisItem.ThisStackSize)
+        if (!isEmpty && item.name == ThisItem.name && items.Count < ThisItem.ThisStackSize)
         {
             items.Push(item);
             item.ThisSlot = this;
@@ -123,4 +153,56 @@ public class SlotScript : MonoBehaviour,IPointerClickHandler,IClicable
         }
         return false;
     }
+    private bool PutItemBack()
+    {
+        if (InventoryScript.Instance.FromSlot == this)
+        {
+            InventoryScript.Instance.FromSlot.ThisIcon.color = Color.white;
+            return true;
+        }
+        return false;
+    }
+    public bool AddItems(ObservableStack<Item> newItems)
+    {
+        //sprwadza czy slot jest pusty lub jest tego samego typu 
+        if (isEmpty || newItems.Peek().GetType() == ThisItem.GetType())
+        {
+            int count = newItems.Count;
+            for (int i = 0; i < count; i++)
+            {
+
+                if (isFull)
+                {
+                    return false;
+                }
+                AddItem(newItems.Pop());
+            }
+            return true;
+        }
+        return false;
+    }
+    private bool SwapItems(SlotScript from)
+
+    {
+        if (isEmpty)
+        {
+            return false;
+        }
+        //zamienia miejscami przedmioty
+        if(from.ThisItem.GetType() != ThisItem.GetType() || from.ThisCount+ThisCount>ThisItem.ThisStackSize)
+        {
+            //kopijujem itemy do tempa z slota do zmany A
+            ObservableStack<Item> tmpFrom = new ObservableStack<Item>(from.items);
+            //czyscimy slot od zmiany
+            from.items.Clear();
+            //dodajemy itemy do drugigo slotu do zmiany
+            //Same B
+            from.AddItems(items);
+            items.Clear();
+            AddItems(tmpFrom);
+            return true;
+        }
+        return false;
+    }
+
 }

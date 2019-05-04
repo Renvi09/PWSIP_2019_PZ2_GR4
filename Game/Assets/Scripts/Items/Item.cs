@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Item : ScriptableObject
+public abstract class Item : ScriptableObject,IMove
 {
 
     [SerializeField]
@@ -11,7 +12,7 @@ public abstract class Item : ScriptableObject
     private int stackSize;
 
     private SlotScript slotscript;
-    public Sprite Icon
+    public Sprite ThisIcon
     {
         get
         {
@@ -39,6 +40,9 @@ public abstract class Item : ScriptableObject
             slotscript = value;
         }
     }
+
+  
+
     public void Remove()
     {
         if (ThisSlot!=null)

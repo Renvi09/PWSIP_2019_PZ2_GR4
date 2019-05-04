@@ -11,7 +11,7 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler
     public IUse ThisIUse { get; set; }
     public Button ThisButton { get; private set; }
 
-    public Image Icon
+    public Image ThisIcon
     {
         get
         {
@@ -36,18 +36,36 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler
     // Update is called once per frame
     void Update()
     {
-      
+
     }
     public void OnClick()
     {
-        if(ThisIUse!=null)
+        if (ThisIUse != null)
         {
             ThisIUse.Use();
         }
     }
-        
+
     public void OnPointerClick(PointerEventData eventData)
     {
-       
+        if(eventData.button == PointerEventData.InputButton.Left)
+        {
+            if (HandScript.Instance.ThisMove != null && HandScript.Instance.ThisMove is IUse )
+            {
+                SetUsable(HandScript.Instance.ThisMove as IUse);
+            }
+        }
+
+    }
+    public void SetUsable(IUse useable)
+    {
+    
+        this.ThisIUse = useable;
+        UpdateVisual();
+    }
+    public void UpdateVisual()
+    {
+        ThisIcon.sprite = HandScript.Instance.Put().ThisIcon;
+        ThisIcon.color= Color.white;
     }
 }
