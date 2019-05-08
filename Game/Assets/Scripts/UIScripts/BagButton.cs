@@ -12,7 +12,7 @@ public class BagButton : MonoBehaviour,IPointerClickHandler
     [SerializeField]
     private Sprite empty, full;
 
-    public Bag Bag
+    public Bag ThisBag
     {
         get
         {
@@ -24,7 +24,7 @@ public class BagButton : MonoBehaviour,IPointerClickHandler
         {
             if(value !=null)
             {
-                GetComponent<Image>().sprite = full;
+                GetComponent<Image>().sprite = full;               
             }
             else
             {
@@ -36,21 +36,22 @@ public class BagButton : MonoBehaviour,IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-       if(bag!=null)
+        if (eventData.button == PointerEventData.InputButton.Left)
         {
-            bag.bagScript.OpenClose();
+            if(Input.GetKey(KeyCode.LeftShift))
+            {
+                HandScript.Instance.TakeMoveable(ThisBag);
+            }
+            if (bag != null)
+            {
+                bag.bagScript.OpenClose();
+            }
         }
     }
-
-    // Start is called before the first frame update
-    void Start()
+    public void RemoveBagFromButton()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        InventoryScript.Instance.RemoveBag(ThisBag);
+        ThisBag.thisBagButton = null;
+        ThisBag = null;
     }
 }

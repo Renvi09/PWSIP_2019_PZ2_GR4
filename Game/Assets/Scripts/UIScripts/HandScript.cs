@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class HandScript : MonoBehaviour
@@ -28,12 +29,13 @@ public class HandScript : MonoBehaviour
     void Start()
     {
         ThisIcon = GetComponent<Image>();
-        
+     
     }
 
     // Update is called once per frame
     void Update()
     {
+        DeleteItem();
         ThisIcon.transform.position = Input.mousePosition;
     }
     public void TakeMoveable(IMove moveable)
@@ -53,5 +55,17 @@ public class HandScript : MonoBehaviour
     {
         ThisMove = null;
         ThisIcon.color = new Color(0, 0, 0, 0);
+    }
+    private void DeleteItem()
+    {
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject() && Instance.ThisMove != null)
+        {
+            if (ThisMove is Item && InventoryScript.Instance.FromSlot != null)
+            {
+                (ThisMove as Item).ThisSlot.Clear();
+            }
+            Drop();
+            InventoryScript.Instance.FromSlot = null;
+        }
     }
 }

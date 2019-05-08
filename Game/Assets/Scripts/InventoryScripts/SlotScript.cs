@@ -107,10 +107,17 @@ public class SlotScript : MonoBehaviour, IPointerClickHandler, IClicable
                 HandScript.Instance.TakeMoveable(ThisItem as IMove);
                 InventoryScript.Instance.FromSlot = this;
             }
+            else if (InventoryScript.Instance.FromSlot == null && isEmpty && (HandScript.Instance.ThisMove is Bag))
+            {
+                Bag bag = (Bag)HandScript.Instance.ThisMove;
+                AddItem(bag);
+                bag.thisBagButton.RemoveBagFromButton();
+                HandScript.Instance.Drop();
+            }
             //jesli jest cos na rece odklada go
             else if (InventoryScript.Instance.FromSlot != null)
             {
-                if (PutItemBack() ||SwapItems(InventoryScript.Instance.FromSlot) || AddItems(InventoryScript.Instance.FromSlot.items))
+                if (PutItemBack()||MergeItems(InventoryScript.Instance.FromSlot) ||SwapItems(InventoryScript.Instance.FromSlot) || AddItems(InventoryScript.Instance.FromSlot.items))
                 {
                     HandScript.Instance.Drop();
                     InventoryScript.Instance.FromSlot = null;
@@ -204,5 +211,29 @@ public class SlotScript : MonoBehaviour, IPointerClickHandler, IClicable
         }
         return false;
     }
-
+    private bool MergeItems(SlotScript from)
+    {
+        if (isEmpty)
+        {
+            return false;
+        }
+        if(from.ThisItem.GetType() == ThisItem.GetType() && !isFull)
+        {
+            int freeSlots = ThisItem.ThisStackSize - ThisCount;
+            for (int i = 0; i < freeSlots; i++)
+            {
+                AddItem(from.items.Pop());
+            }
+            return true;
+        }
+        return false;
+    }
+    public void Clear()
+    {
+        if(items.Count>0)
+        {
+            items.Clear();
+        }
+    }
+  
 }

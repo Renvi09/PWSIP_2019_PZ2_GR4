@@ -64,7 +64,8 @@ public class UIManager : MonoBehaviour
         //jesli stack jest tniejszy niz 2 ukrywa stack size
         else
         {
-            clicable.ThisStackText.color =new Color(0, 0, 0, 0);
+            clicable.ThisStackText.color = new Color(0, 0, 0, 0);
+            clicable.ThisIcon.color = Color.white;
         }
         //jesli 0 ukrywa ikone
         if(clicable.ThisCount==0)

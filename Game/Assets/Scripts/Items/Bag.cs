@@ -11,7 +11,7 @@ public class Bag : Item, IUse
     private GameObject bagPrefab;
 
     public BagScript bagScript { get; set; }
-
+    public BagButton thisBagButton { get; set; }
     public int Slots
     {
         get

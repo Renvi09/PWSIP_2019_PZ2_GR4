@@ -44,7 +44,7 @@ public class InventoryScript : MonoBehaviour
             fromSlot = value;
             if (value != null)
             {
-                fromSlot.ThisIcon.color = Color.yellow;
+                fromSlot.ThisIcon.color = Color.grey;
             }
             fromSlot = value;
         }
@@ -89,10 +89,11 @@ public class InventoryScript : MonoBehaviour
     {
         foreach(BagButton bagButton in bagButtons)
         {
-            if (bagButton.Bag == null)
+            if (bagButton.ThisBag == null)
             {
-                bagButton.Bag = bag;
+                bagButton.ThisBag = bag;
                 bags.Add(bag);
+                bag.thisBagButton = bagButton;
                 break;
             }
         }
@@ -141,12 +142,17 @@ public class InventoryScript : MonoBehaviour
         //if True otwiera wszytkie bagi
         //if flase zamyka wszytkie bagi
         bool closedBad = bags.Find(x => !x.bagScript.IsOpen);
-        foreach(Bag bag in bags)
+        foreach (Bag bag in bags)
         {
-            if(bag.bagScript.IsOpen!=closedBad)
+            if (bag.bagScript.IsOpen != closedBad)
             {
                 bag.bagScript.OpenClose();
             }
         }
+    }
+    public void RemoveBag(Bag bag)
+    {
+        bags.Remove(bag);
+        Destroy(bag.bagScript.gameObject);
     }
 }
