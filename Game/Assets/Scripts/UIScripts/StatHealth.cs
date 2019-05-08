@@ -31,7 +31,7 @@ public class StatHealth : MonoBehaviour
             }
 
             currentFill = maxValue / currentValue;
-            Debug.Log(currentFill);
+            
         }
 
     }
