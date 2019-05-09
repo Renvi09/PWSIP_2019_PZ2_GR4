@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 79494511}
   - component: {fileID: 79494508}
   m_Layer: 5
-  m_Name: AbbilityButton2
+  m_Name: AbilityButton2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -640,10 +640,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abbilityButtons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1368325105}
+  - {fileID: 79494508}
+  - {fileID: 553091026}
+  - {fileID: 273581894}
 --- !u!4 &209377945
 Transform:
   m_ObjectHideFlags: 0
@@ -750,7 +750,7 @@ GameObject:
   - component: {fileID: 256493586}
   - component: {fileID: 256493585}
   m_Layer: 5
-  m_Name: AbbilityBar
+  m_Name: AbilityBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -854,7 +854,7 @@ GameObject:
   - component: {fileID: 273581892}
   - component: {fileID: 273581894}
   m_Layer: 5
-  m_Name: AbbilityButton4
+  m_Name: AbilityButton4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1199,7 +1199,7 @@ GameObject:
   - component: {fileID: 553091029}
   - component: {fileID: 553091026}
   m_Layer: 5
-  m_Name: AbbilityButton3
+  m_Name: AbilityButton3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2021,7 +2021,7 @@ GameObject:
   - component: {fileID: 1368325102}
   - component: {fileID: 1368325105}
   m_Layer: 5
-  m_Name: AbbilityButton1
+  m_Name: AbilityButton1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

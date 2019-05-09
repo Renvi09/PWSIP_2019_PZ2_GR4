@@ -33,19 +33,19 @@ public class UIManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-           // OnClickButton(0);
+            OnClickButton("AbilityButton1");
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-          //  OnClickButton(2);
+            OnClickButton("AbilityButton2");
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-         //   OnClickButton(3);
+            OnClickButton("AbilityButton3");
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-          //  OnClickButton(4);
+            OnClickButton("AbilityButton4");
         }
         if(Input.GetKeyDown(KeyCode.B))
         {
