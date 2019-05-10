@@ -14,6 +14,7 @@ public class SlotScript : MonoBehaviour, IPointerClickHandler, IClicable
     [SerializeField]
     private Text stackSizeText;
     private Item item;
+    public BagScript ThisBagScript { get; set; }
     public bool isEmpty
     {
         get
@@ -80,6 +81,14 @@ public class SlotScript : MonoBehaviour, IPointerClickHandler, IClicable
         }
     }
 
+    public ObservableStack<Item> ThisItems
+    {
+        get
+        {
+            return items;
+        }
+    }
+
     //dodawanie itemu do ekwipunku
     public bool AddItem(Item item)
     {
@@ -93,7 +102,8 @@ public class SlotScript : MonoBehaviour, IPointerClickHandler, IClicable
     {
         if (!isEmpty)
         {
-            items.Pop();
+            
+            InventoryScript.Instance.OnItemCountChanged(items.Pop());
         }
     }
 
@@ -110,9 +120,14 @@ public class SlotScript : MonoBehaviour, IPointerClickHandler, IClicable
             else if (InventoryScript.Instance.FromSlot == null && isEmpty && (HandScript.Instance.ThisMove is Bag))
             {
                 Bag bag = (Bag)HandScript.Instance.ThisMove;
-                AddItem(bag);
-                bag.thisBagButton.RemoveBagFromButton();
-                HandScript.Instance.Drop();
+                if (bag.bagScript!= ThisBagScript && InventoryScript.Instance.ThisEmptySlots - bag.Slots >0)
+                {
+                    AddItem(bag);
+                    bag.thisBagButton.RemoveBagFromButton();
+                    HandScript.Instance.Drop();
+                }
+
+               
             }
             //jesli jest cos na rece odklada go
             else if (InventoryScript.Instance.FromSlot != null)
@@ -232,7 +247,9 @@ public class SlotScript : MonoBehaviour, IPointerClickHandler, IClicable
     {
         if(items.Count>0)
         {
+            InventoryScript.Instance.OnItemCountChanged(items.Pop());
             items.Clear();
+           
         }
     }
   

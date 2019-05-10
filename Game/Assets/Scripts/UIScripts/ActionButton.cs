@@ -6,10 +6,14 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ActionButton : MonoBehaviour, IPointerClickHandler
+public class ActionButton : MonoBehaviour, IPointerClickHandler,IClicable
 {
     public IUse ThisIUse { get; set; }
     public Button ThisButton { get; private set; }
+    private Stack<IUse> useables = new Stack<IUse>();
+    private int count;
+    [SerializeField]
+    private Text stackSize;
 
     public Image ThisIcon
     {
@@ -24,6 +28,22 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler
         }
     }
 
+    public int ThisCount
+    {
+        get
+        {
+            return count;
+        }
+    }
+
+    public Text ThisStackText
+    {
+        get
+        {
+            return stackSize;
+        }
+    }
+
     [SerializeField]
     private Image icon;
     // Start is called before the first frame update
@@ -31,6 +51,7 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler
     {
         ThisButton = GetComponent<Button>();
         ThisButton.onClick.AddListener(OnClick);
+        InventoryScript.Instance.itemCountChangedEvent += new ItemCountChanged(UpdateItemCount);
     }
 
     // Update is called once per frame
@@ -40,10 +61,18 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler
     }
     public void OnClick()
     {
-        if (ThisIUse != null)
+        if (HandScript.Instance.ThisMove == null)
         {
-            ThisIUse.Use();
+            if (ThisIUse != null)
+            {
+                ThisIUse.Use();
+            }
+            if(useables != null && useables.Count >0)
+            {
+                useables.Peek().Use();
+            }
         }
+       
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -59,13 +88,40 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler
     }
     public void SetUsable(IUse useable)
     {
-    
-        this.ThisIUse = useable;
+        if (useable is Item)
+        {
+            useables = InventoryScript.Instance.GetUsables(useable);
+            count = useables.Count;
+            InventoryScript.Instance.FromSlot.ThisIcon.color = Color.white;
+            InventoryScript.Instance.FromSlot = null;
+
+        }
+        else
+        {
+            this.ThisIUse = useable;
+          
+        }
         UpdateVisual();
     }
     public void UpdateVisual()
     {
         ThisIcon.sprite = HandScript.Instance.Put().ThisIcon;
         ThisIcon.color= Color.white;
+        if(count>1)
+        {
+            UIManager.Instance.UpdateStackSize(this);
+        }
+    }
+    public void UpdateItemCount(Item item)
+    {
+       if(item is IUse &&useables.Count >0)
+        {
+          if(useables.Peek().GetType()==item.GetType())
+            {
+                useables = InventoryScript.Instance.GetUsables(item as IUse);
+                count = useables.Count;
+                UIManager.Instance.UpdateStackSize(this);
+            }
+        }
     }
 }

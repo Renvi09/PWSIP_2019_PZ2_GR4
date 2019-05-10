@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+public delegate void ItemCountChanged(Item item);
 public class InventoryScript : MonoBehaviour
 {
+    public event ItemCountChanged itemCountChangedEvent;
     private static InventoryScript instance;
     //zwraca  instancje
     public static InventoryScript Instance
@@ -19,6 +20,19 @@ public class InventoryScript : MonoBehaviour
         }
 
        
+    }
+    public int ThisEmptySlots
+    {
+        get
+        {
+            int count = 0;
+            foreach(Bag bag in bags)
+            {
+                count += bag.bagScript.ThisEmptySlots;
+            }
+            Debug.Log(count);
+            return count;
+        }
     }
     private SlotScript fromSlot;
 
@@ -105,6 +119,7 @@ public class InventoryScript : MonoBehaviour
         {
             if(bag.bagScript.AddItem(item))
             {
+                OnItemCountChanged(item);
                 return;
             }
         }
@@ -118,6 +133,7 @@ public class InventoryScript : MonoBehaviour
             {
                 if(slot.StackItem(item))
                 {
+                    OnItemCountChanged(item);
                     return true;
                 }
             }
@@ -154,5 +170,32 @@ public class InventoryScript : MonoBehaviour
     {
         bags.Remove(bag);
         Destroy(bag.bagScript.gameObject);
+    }
+    public Stack<IUse> GetUsables(IUse type)
+    {
+        Stack<IUse> useables = new Stack<IUse>();
+        foreach(Bag bag in bags)
+        {
+            foreach(SlotScript slot in bag.bagScript.ThisSlots)
+            {
+                if(!slot.isEmpty && slot.ThisItem.GetType() == type.GetType() )
+                {
+                    foreach(Item item in slot.ThisItems)
+                    {
+                        useables.Push(item as IUse);
+                    }
+                   
+                }
+            }
+        }
+        return useables;
+    }
+    public void OnItemCountChanged(Item item)
+    {
+        if (itemCountChangedEvent != null)
+        {
+            itemCountChangedEvent.Invoke(item);
+        }
+
     }
 }

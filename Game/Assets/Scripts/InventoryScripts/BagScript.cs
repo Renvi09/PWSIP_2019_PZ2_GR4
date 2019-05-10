@@ -8,7 +8,26 @@ public class BagScript : MonoBehaviour
     private GameObject slotPrefab;
     private CanvasGroup canvasGroup;
     private List<SlotScript> slots = new List<SlotScript>();
-  
+
+    public int ThisEmptySlots
+    {
+        get
+        {
+
+            int count = 0;
+            foreach(SlotScript slot in ThisSlots)
+            {
+                if(slot.isEmpty)
+                {
+                    count++;
+                }
+                
+            }
+            return count;
+        }
+
+    }
+
 
     public bool IsOpen
     {
@@ -40,6 +59,7 @@ public class BagScript : MonoBehaviour
         for(int i =0;i<slotNumber;i++)
         {
             SlotScript slot = Instantiate(slotPrefab, transform).GetComponent<SlotScript>();
+            slot.ThisBagScript = this;
             slots.Add(slot);
         }
     }
@@ -61,5 +81,21 @@ public class BagScript : MonoBehaviour
     {
         canvasGroup.alpha = canvasGroup.alpha > 0 ? 0 : 1;
         canvasGroup.blocksRaycasts = canvasGroup.blocksRaycasts == true ? false : true;
+    }
+    public List<Item> ReturnItems()
+    {
+        List<Item> newItems = new List<Item>();
+        foreach(SlotScript slot in slots)
+        {
+            if(!slot.isEmpty)
+            {
+                foreach(Item item in slot.ThisItems)
+                {
+                    newItems.Add(item);
+                }
+                
+            }
+        }
+        return newItems;
     }
 }

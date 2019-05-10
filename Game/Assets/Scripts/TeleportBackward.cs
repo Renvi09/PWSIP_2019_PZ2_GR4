@@ -27,6 +27,7 @@ public class TeleportBackward : MonoBehaviour
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
+        
         isPlayerColison = true;
         Debug.Log(isPlayerColison);
     }
