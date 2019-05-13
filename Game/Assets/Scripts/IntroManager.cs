@@ -18,7 +18,7 @@ public class IntroManager : MonoBehaviour
 
         position += localUp * speed * Time.deltaTime;
         transform.position = position;
-        if (timer > 15)
+        if (timer >120)
         {
             SceneManager.LoadScene("TestingScen");
         }

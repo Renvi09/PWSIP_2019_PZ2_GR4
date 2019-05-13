@@ -7,7 +7,9 @@ public class StatHealth : MonoBehaviour
 { 
     private float currentFill;
     public float maxValue { get; set; }
-
+    public GameObject HealthBar;
+    private Image healthBarImage;
+    private float currentValue;
     public float CurrentValue
     {
         get
@@ -21,32 +23,53 @@ public class StatHealth : MonoBehaviour
             {
                 currentValue = maxValue;
             }
-            else if (value < 0)
+            else if (value <0)
             {
-                currentValue = 0f;
+                currentValue = 0;
+                PlayerStats.Instance.Gold += 50;
+                Destroy(this.gameObject);
+                
+
             }
             else
             {
                 currentValue = value;
             }
+            if (currentValue == 0)
 
-            currentFill = maxValue / currentValue;
-            
+            {
+                currentFill = 0;
+            }
+            else
+            {
+                Debug.Log(currentFill);
+                currentFill = currentValue / maxValue;
+            }
+          
         }
 
     }
 
-    private float currentValue;
+
     // Start is called before the first frame update
+    private void Awake()
+    {
+        maxValue = 50;
+        CurrentValue = 50;
+    }
     void Start()
     {
-        currentValue = 50;
-        maxValue = 50;
+     
+        healthBarImage = HealthBar.GetComponent<Image>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+        if (healthBarImage.fillAmount != currentFill)
+        {
+            healthBarImage.fillAmount = currentFill;
+        }
     }
 }

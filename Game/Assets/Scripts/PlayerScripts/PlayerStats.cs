@@ -7,7 +7,7 @@ public class PlayerStats : MonoBehaviour
 {
 
 
-       private static PlayerStats instance;
+    private static PlayerStats instance;
     //zwraca  instancje
     public static PlayerStats Instance
     {
@@ -16,7 +16,8 @@ public class PlayerStats : MonoBehaviour
             
             if(instance==null)
             {
-                instance = FindObjectOfType<PlayerStats>();
+                instance = FindObjectOfType<Player>().GetComponent<PlayerStats>();
+                ;
             }
             return instance;
         }
@@ -24,6 +25,8 @@ public class PlayerStats : MonoBehaviour
        
     }
     //Zmienne
+    [SerializeField]
+    private Text goldText;
     public Text healthBarText;
     private Image healthBarImage;
     public GameObject HealthBar;
@@ -121,8 +124,13 @@ public class PlayerStats : MonoBehaviour
 
         set
         {
-            
+            if (value < 0)
+            {
+                gold = 0f;
+            }
+
             gold = value;
+            goldText.text = gold + " G ";
         }
     }
 }

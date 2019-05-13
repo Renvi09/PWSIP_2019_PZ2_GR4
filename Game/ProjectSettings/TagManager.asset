@@ -50,6 +50,9 @@ TagManager:
   - name: Items
     uniqueID: 821488341
     locked: 0
-  - name: New Layer
+  - name: Player
     uniqueID: 2120088619
+    locked: 0
+  - name: Attacks
+    uniqueID: 1200101155
     locked: 0

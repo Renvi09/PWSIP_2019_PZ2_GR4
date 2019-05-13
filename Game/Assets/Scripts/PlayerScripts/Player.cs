@@ -4,7 +4,26 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-   
+    //fordebug
+    public GameObject enemy;
+   //
+    private static Player instance;
+    //zwraca  instancje
+    public static Player Instance
+    {
+        get
+        {
+
+            if (instance == null)
+            {
+                instance = FindObjectOfType<Player>();
+                
+            }
+            return instance;
+        }
+
+
+    }
     private Animator playerAnimator;
     private Rigidbody2D playerRigidbody2D;
     private Vector2 direction;
@@ -52,7 +71,19 @@ public class Player : MonoBehaviour
           
 
         }
-        
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            var ennn = (GameObject)Instantiate(
+               enemy,
+              transform.position-new Vector3(10,10,0),
+                transform.rotation);
+            ennn.GetComponent<EnemyAtack>().damage = 5;
+            ennn.GetComponent<StatHealth>().maxValue = 150;
+
+            ennn.GetComponent<StatHealth>().CurrentValue = 150;
+            ennn.GetComponent<EnemyScript>().target = this.gameObject.transform;
+
+        }
         AnimationLayerControl();
     }
 
@@ -77,9 +108,9 @@ public class Player : MonoBehaviour
 
             var bullet = (GameObject)Instantiate(
                 playerStats.SpellList[0],
-               transform.position,
+              transform.position,
                 rotation);
-
+            bullet.transform.position = this.transform.position;
             bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.up * 5;
             Destroy(bullet, 2.0f);
         }
