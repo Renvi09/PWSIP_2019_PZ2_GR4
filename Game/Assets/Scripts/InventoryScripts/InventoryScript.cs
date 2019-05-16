@@ -113,16 +113,17 @@ public class InventoryScript : MonoBehaviour
         }
     }
     //sprwdza czy jest miescie dla itemu 
-    private void PlaceInEmpty(Item item)
+    private bool PlaceInEmpty(Item item)
     {
         foreach (Bag bag in bags)
         {
             if(bag.bagScript.AddItem(item))
             {
                 OnItemCountChanged(item);
-                return;
+                return true;
             }
         }
+        return false;
     }
     //sprwadza czy jest miescie dla itemu w stacku 
     private bool CanStack(Item item)
@@ -141,17 +142,17 @@ public class InventoryScript : MonoBehaviour
         return false;
     }
     //sprwadza czy moze dodaj item do konkrengo baga jesli nie przechodzi dalej
-    public void AddItem(Item item)
+    public bool AddItem(Item item)
     {
         if (item.ThisStackSize > 0)
         {
             if (CanStack(item))
             {
-                return;
+                return true;
             }
-
+            
         }
-        PlaceInEmpty(item);
+        return PlaceInEmpty(item);
     }
     public void OpenCloseInventory()
     {

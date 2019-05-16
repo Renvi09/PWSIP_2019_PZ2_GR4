@@ -3,14 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Item : ScriptableObject,IMove
+
+public abstract class Item : ScriptableObject,IMove,IDescribable
 {
 
+    [SerializeField]
+    private string title;
     [SerializeField]
     private Sprite icon;
     [SerializeField]
     private int stackSize;
-
+    [SerializeField]
+    private Quality quality;
     private SlotScript slotscript;
     public Sprite ThisIcon
     {
@@ -41,7 +45,23 @@ public abstract class Item : ScriptableObject,IMove
         }
     }
 
-  
+    public Quality ThisQuality
+    {
+        get
+        {
+            return quality;
+        }
+
+    }
+
+    public string ThisTitle
+    {
+        get
+        {
+            return title;
+        }
+
+    }
 
     public void Remove()
     {
@@ -49,5 +69,12 @@ public abstract class Item : ScriptableObject,IMove
         {
             ThisSlot.RemoveItem(this);
         }
+    }
+
+    public virtual string GetDescription()
+    {
+       
+       
+        return string.Format("<color={0}>{1}</color>",QualityColor.ThisColors[ThisQuality],ThisTitle);
     }
 }

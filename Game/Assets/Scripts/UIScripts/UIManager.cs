@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
 
-
+    
     private static UIManager instance;
     //zwraca  instancje
     public static UIManager Instance
@@ -23,12 +23,15 @@ public class UIManager : MonoBehaviour
 
 
     }
-    
+    [SerializeField]
+    private GameObject tooltip;
     [SerializeField]
     private ActionButton[] abbilityButtons;
-   
-
-    
+    private Text tooltipText;
+    private void Awake()
+    {
+        tooltipText = tooltip.GetComponentInChildren<Text>();
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -85,4 +88,17 @@ public class UIManager : MonoBehaviour
         canvasGroup.alpha = canvasGroup.alpha > 0 ? 0 : 1;
         canvasGroup.blocksRaycasts = canvasGroup.blocksRaycasts == true ? false : true;
     }
+    public void ShowTooltip(Vector3 position,IDescribable description)
+    {
+        tooltip.SetActive(true);
+        tooltip.transform.position = position;
+        tooltipText.text = description.GetDescription();
+
+        
+    }
+    public void HideTooltip()
+    {
+        tooltip.SetActive(false);
+    }
+
 }

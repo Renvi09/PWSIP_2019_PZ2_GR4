@@ -13,6 +13,11 @@ public class HpPot : Item,IUse
         Remove();
         PlayerStats.Instance.CurrentHealth += heal;
     }
+    public override string GetDescription()
+    {
+
+        return base.GetDescription()+string.Format("\n Przywraca {0}",heal);
+    }
 
 
 }
