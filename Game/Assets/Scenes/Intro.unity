@@ -274,7 +274,7 @@ GameObject:
   - component: {fileID: 1946156217}
   - component: {fileID: 1946156221}
   m_Layer: 0
-  m_Name: New Text
+  m_Name: Intro_Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -305,7 +305,7 @@ TextMesh:
     sobie Wacek. \r\nBy\u0142 on bardzo wierz\u0105cym\r\ncz\u0142owiekiem.\r\n\r\nWierzy\u0142
     w \u015Bwi\u0119t\u0105 tr\xF3jc\u0119\r\nka\u017Cdego hazardzisty:\r\nBoga RNG,
     Wieczny\r\nTopdeck i Never Lucky.\r\n\r\nJak zwykle sp\u0119dza\u0142\r\nwolny
-    wiecz\xF3r w\r\nlokalnym kasynie.\r\nMia\u0142 dzi\u015B wyj\u0105tkowo\r\ndobry
+    wiecz\xF3r\nw\r lokalnym kasynie.\r\nMia\u0142 dzi\u015B wyj\u0105tkowo\r\ndobry
     dzie\u0144: karty\r\ndochodzi\u0142y, przeciwnicy\r\nbyli s\u0142abi, wszystko
     sz\u0142o\r\npo Jego my\u015Bli. A\u017C do\r\npewnego rozdania.\r\n\r\nMia\u0142
     na r\u0119ce Strita.\r\nMy\u015Bla\u0142, \u017Ce B\xF3g RNG\r\nczuwa. Postawi\u0142
