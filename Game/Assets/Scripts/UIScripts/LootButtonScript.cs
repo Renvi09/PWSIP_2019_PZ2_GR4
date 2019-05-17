@@ -11,7 +11,7 @@ public class LootButtonScript : MonoBehaviour,IPointerEnterHandler,IPointerExitH
     private Image icon;
     [SerializeField]
     private Text title;
-
+    private LootWindowScript lootWindow;
     public Image ThisIcon
     {
         get
@@ -31,6 +31,10 @@ public class LootButtonScript : MonoBehaviour,IPointerEnterHandler,IPointerExitH
 
     }
     public Item ThisLootItem { get; set; }
+    private void Awake()
+    {
+        lootWindow = GetComponentInParent<LootWindowScript>();
+    }
     public void OnPointerEnter(PointerEventData eventData)
     {
         UIManager.Instance.ShowTooltip(transform.position, ThisLootItem);
@@ -46,6 +50,7 @@ public class LootButtonScript : MonoBehaviour,IPointerEnterHandler,IPointerExitH
         if (InventoryScript.Instance.AddItem(ThisLootItem)) 
         {
             gameObject.SetActive(false);
+            lootWindow.TakeLoot(ThisLootItem);
             UIManager.Instance.HideTooltip();
         }
     }
