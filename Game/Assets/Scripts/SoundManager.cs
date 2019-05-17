@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
+    //GameSettings gs = new GameSettings();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +26,7 @@ public class SoundManager : MonoBehaviour
         newAudioSource.clip = clip;
         newAudioSource.loop = loop;
         newAudioSource.playOnAwake = playAwake;
-        newAudioSource.volume = vol;
+        newAudioSource.volume = vol; //gs.musicVolume;
 
         return newAudioSource;
 
