@@ -5,9 +5,23 @@ using UnityEngine.UI;
 
 public class LootWindowScript : MonoBehaviour
 {
-    //debug
-    [SerializeField]
-    private Item[] items;
+    private static LootWindowScript instance;
+    //zwraca  instancje
+    public static LootWindowScript Instance
+    {
+        get
+        {
+
+            if (instance == null)
+            {
+                instance = FindObjectOfType<LootWindowScript>();
+            }
+            return instance;
+        }
+
+
+    }
+
 
 
     [SerializeField]
@@ -18,17 +32,11 @@ public class LootWindowScript : MonoBehaviour
     private int pageIndex=0;
     [SerializeField]
     private LootButtonScript[] lootButtons;
-    // Start is called before the first frame update
     
-        
+       
     void Start()
     {
-        List<Item> tmp = new List<Item>();
-        for (int i = 0; i < 5; i++)
-        {
-            tmp.Add(items[1]);
-        }
-        CreatePages(tmp);
+
     }
     public void CreatePages(List<Item> itemList)
     {
@@ -109,5 +117,9 @@ public class LootWindowScript : MonoBehaviour
             }
             AddLoot();
         }
+    }
+    public void OpenClose()
+    {
+
     }
 }

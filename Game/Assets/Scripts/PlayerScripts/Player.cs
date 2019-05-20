@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Player : MonoBehaviour
 {
@@ -31,7 +32,7 @@ public class Player : MonoBehaviour
     PlayerStats playerStats;
     float timer;
   
-    public Vector2 target;
+   
     public float timeBetweenBullets = 1f;
     
     private bool isMoving
@@ -98,7 +99,7 @@ public class Player : MonoBehaviour
     }
     private void PlayerAtack()
     {
-        if ((Input.GetMouseButton(0) && timer > timeBetweenBullets) || (Input.GetMouseButtonDown(0) && timer>timeBetweenBullets))
+        if ((Input.GetMouseButton(0) && timer > timeBetweenBullets && !EventSystem.current.IsPointerOverGameObject()) || (Input.GetMouseButtonDown(0) && timer>timeBetweenBullets && !EventSystem.current.IsPointerOverGameObject()))
         {
             timer = 0f;
             var pos = Input.mousePosition;
