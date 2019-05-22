@@ -30,7 +30,7 @@ public class InventoryScript : MonoBehaviour
             {
                 count += bag.bagScript.ThisEmptySlots;
             }
-            Debug.Log(count);
+           
             return count;
         }
     }

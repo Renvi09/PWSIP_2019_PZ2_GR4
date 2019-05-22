@@ -7,6 +7,10 @@ public class LootBoxScript : MonoBehaviour
     [SerializeField]
     private LootTable lootTable;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        lootTable = GetComponent<LootTable>();
+    }
     void Start()
     {
         Debug.Log(LayerMask.GetMask("Interactable"));
@@ -19,7 +23,7 @@ public class LootBoxScript : MonoBehaviour
     }
     public  void Interact()
     {
-        Debug.Log("XD");
+        lootTable.ShowLoot();
         
     }
 }

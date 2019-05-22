@@ -22,8 +22,12 @@ public class LootWindowScript : MonoBehaviour
 
     }
 
-
-
+    public bool IsOpen
+    {
+        get { return canvas.alpha > 0; }
+    }
+    private List<Item> dropedLoot = new List<Item>();
+    private CanvasGroup canvas;
     [SerializeField]
     private GameObject nextButton, prevButton;
     [SerializeField]
@@ -32,25 +36,30 @@ public class LootWindowScript : MonoBehaviour
     private int pageIndex=0;
     [SerializeField]
     private LootButtonScript[] lootButtons;
-    
-       
-    void Start()
-    {
 
+    private void Awake()
+    {
+        canvas = GetComponent<CanvasGroup>();
     }
     public void CreatePages(List<Item> itemList)
     {
-        List<Item> page = new List<Item>();
-        for (int i = 0; i <itemList.Count; i++)
+        if(!IsOpen)
         {
-            page.Add(itemList[i]);
-            if(page.Count == 4 || i==itemList.Count -1)
+            List<Item> page = new List<Item>();
+            dropedLoot = itemList;
+            for (int i = 0; i < itemList.Count; i++)
             {
-                pages.Add(page);
-                page = new List<Item>();
+                page.Add(itemList[i]);
+                if (page.Count == 4 || i == itemList.Count - 1)
+                {
+                    pages.Add(page);
+                    page = new List<Item>();
+                }
             }
+            AddLoot();
+            Open();
         }
-        AddLoot();
+
     }
     private void AddLoot()
     {
@@ -107,19 +116,28 @@ public class LootWindowScript : MonoBehaviour
     public void TakeLoot(Item lootItem)
     {
         pages[pageIndex].Remove(lootItem);
-
-        if (pages[pageIndex].Count ==0 )
+        dropedLoot.Remove(lootItem);
+        if (pages[pageIndex].Count == 0)
         {
             pages.Remove(pages[pageIndex]);
-            if (pageIndex ==pages.Count && pageIndex >0)
+            if (pageIndex == pages.Count && pageIndex > 0)
             {
                 pageIndex--;
             }
             AddLoot();
         }
     }
-    public void OpenClose()
+    public void Close()
     {
-
+        pages.Clear();
+        canvas.alpha = 0;
+        canvas.blocksRaycasts = false;
+        ClearButtons();
+    }
+  
+    public void Open()
+    {
+        canvas.alpha = 1;
+        canvas.blocksRaycasts = true;
     }
 }

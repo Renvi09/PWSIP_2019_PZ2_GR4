@@ -8,12 +8,17 @@ public class LootTable : MonoBehaviour
     private Loot[] lootItems;
 
     private List<Item> dropeditems = new List<Item>();
-
+    private bool droped = false;
 
     public void ShowLoot()
     {
-        RollLoot();
-        LootWindowScript.Instance.CreatePages(dropeditems);
+            if(!droped)
+        {
+            RollLoot();
+        }
+          
+            LootWindowScript.Instance.CreatePages(dropeditems);
+       
     }
     private void RollLoot()
     {
@@ -24,6 +29,8 @@ public class LootTable : MonoBehaviour
             {
                 dropeditems.Add(item.ThisItem);
             }
+          
         }
+        droped = true;
     }
 }

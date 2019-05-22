@@ -28,13 +28,15 @@ public class TeleportBackward : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
         
+        if(collision.tag=="Player")
         isPlayerColison = true;
-        Debug.Log(isPlayerColison);
+        
     }
     public void OnTriggerExit2D(Collider2D collision)
     {
-        isPlayerColison = false;
-        Debug.Log(isPlayerColison);
+        if (collision.tag == "Player")
+            isPlayerColison = false;
+     
     }
 } 
   

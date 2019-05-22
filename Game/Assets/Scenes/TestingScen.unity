@@ -2622,7 +2622,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1020093118}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1697973945}
+        m_MethodName: Close
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1020093118
@@ -3083,6 +3094,7 @@ GameObject:
   - component: {fileID: 1245501468}
   - component: {fileID: 1245501470}
   - component: {fileID: 1245501471}
+  - component: {fileID: 1245501472}
   m_Layer: 9
   m_Name: LootBox
   m_TagString: LootBox
@@ -3164,7 +3176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23b2e5e9c161bf941b221a9120f48e7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lootTable: {fileID: 0}
+  lootTable: {fileID: 1245501472}
 --- !u!61 &1245501471
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3191,6 +3203,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.42147872, y: 0.3479385}
   m_EdgeRadius: 0
+--- !u!114 &1245501472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245501467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 428112ff0ea89cb418502482792dbc64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootItems:
+  - item: {fileID: 11400000, guid: d116be6f7149cc74087d3a3791b69989, type: 2}
+    dropChance: 100
+  - item: {fileID: 11400000, guid: 1478f430c20726d4295b89226a0f0e2c, type: 2}
+    dropChance: 50
 --- !u!1 &1311706734
 GameObject:
   m_ObjectHideFlags: 0
@@ -4340,13 +4369,14 @@ GameObject:
   - component: {fileID: 1697973944}
   - component: {fileID: 1697973943}
   - component: {fileID: 1697973945}
+  - component: {fileID: 1697973946}
   m_Layer: 5
   m_Name: LootWindow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1697973942
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4420,6 +4450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b914cc1f405bd1438ae099000363949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsOpen: 0
   nextButton: {fileID: 807709280}
   prevButton: {fileID: 846252136}
   pageNumberText: {fileID: 1839650071}
@@ -4428,6 +4459,18 @@ MonoBehaviour:
   - {fileID: 1166899027}
   - {fileID: 32933052}
   - {fileID: 1350231633}
+--- !u!225 &1697973946
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697973941}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &1726170374
 GameObject:
   m_ObjectHideFlags: 0
