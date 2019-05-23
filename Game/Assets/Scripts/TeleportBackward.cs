@@ -29,7 +29,7 @@ public class TeleportBackward : MonoBehaviour
     {
         
         if(collision.tag=="Player")
-        isPlayerColison = true;
+           isPlayerColison = true;
         
     }
     public void OnTriggerExit2D(Collider2D collision)

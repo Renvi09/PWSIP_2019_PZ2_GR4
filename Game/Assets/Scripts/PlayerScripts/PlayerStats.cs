@@ -95,7 +95,6 @@ public class PlayerStats : MonoBehaviour
             }
             else
             {
-                Debug.Log(currentHealth);
                 currentHealthBarFill = currentHealth / maxHealth;
             }
             healthBarText.text = currentHealth + " / " + maxHealth;

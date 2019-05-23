@@ -76,7 +76,7 @@ public class Player : MonoBehaviour
         {
             var ennn = (GameObject)Instantiate(
                enemy,
-              transform.position-new Vector3(10,10,0),
+              transform.position- new Vector3(10,10,0),
                 transform.rotation);
             ennn.GetComponent<EnemyAtack>().damage = 5;
             ennn.GetComponent<StatHealth>().maxValue = 150;
