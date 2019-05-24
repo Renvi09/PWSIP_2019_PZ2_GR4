@@ -12,10 +12,7 @@ public class GameManagerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       player = GameObject.FindGameObjectWithTag("Player");
-       MakeDungeon();
-    
-      
+       player = GameObject.FindGameObjectWithTag("Player");   
     }
    
     // Update is called once per frame
@@ -44,10 +41,10 @@ public class GameManagerScript : MonoBehaviour
               new Vector3(i*20, 0, 0),
               this.gameObject.transform.rotation);
 
-            room.GetComponentInChildren<TeleportForward>().forward = LevelTeleportList[i - 1] + new Vector3(8, 0, 0);//do zmianny
-            room.GetComponentInChildren<TeleportForward>().currentLevel = i;
-            room.GetComponentInChildren<TeleportBackward>().backward = LevelTeleportList[i + 1] - new Vector3(8, 0, 0);//do zmianny
+            room.GetComponentInChildren<TeleportBackward>().backward = LevelTeleportList[i - 1] + new Vector3(8, 0, 0);//do zmianny
             room.GetComponentInChildren<TeleportBackward>().currentLevel = i;
+            room.GetComponentInChildren<TeleportForward>().forward = LevelTeleportList[i + 1] - new Vector3(8, 0, 0);//do zmianny
+            room.GetComponentInChildren<TeleportForward>().currentLevel = i;
             room.transform.position =(Vector2)LevelTeleportList[i];
             i++;
           

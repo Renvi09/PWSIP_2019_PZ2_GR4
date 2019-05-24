@@ -10,6 +10,7 @@ public class TeleportForward : MonoBehaviour
     private GameObject player;
     public int currentLevel;
     public Text currentLevelText;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -22,18 +23,36 @@ public class TeleportForward : MonoBehaviour
     {
         if (isPlayerColison && Input.GetKeyDown("e"))
         {
-            player.transform.position = forward;
-            currentLevelText.text = (currentLevel - 1).ToString();
+          
+          
+            currentLevelText.text = (currentLevel - 1).ToString();            
+            if (currentLevel == 6)
+            {
+                CameraFollow.Instance.SetLimits(forward + new Vector3(-25f, -14f), forward - new Vector3(-25f, -14f));
+                player.transform.position = forward - new Vector3(20, 0, 0);
+
+            }
+            else
+            {
+
+                CameraFollow.Instance.SetLimits(forward + new Vector3(-12.8f, -7.2f), forward - new Vector3(-12.8f, -7.2f));
+                player.transform.position = forward - new Vector3(10, 0, 0);
+
+            }
+
         }
+        
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        isPlayerColison = true;
-        Debug.Log(isPlayerColison);
+        if (collision.tag == "Player")
+            isPlayerColison = true;
+      
     }
     public void OnTriggerExit2D(Collider2D collision)
     {
-        isPlayerColison = false;
-        Debug.Log(isPlayerColison);
+        if (collision.tag == "Player")
+            isPlayerColison = false;
+    
     }
 }

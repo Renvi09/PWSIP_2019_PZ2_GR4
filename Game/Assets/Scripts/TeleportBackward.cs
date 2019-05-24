@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class TeleportBackward : MonoBehaviour
 {
+
     public Vector3 backward;
     private bool isPlayerColison = false;
     private GameObject player;
@@ -21,8 +22,20 @@ public class TeleportBackward : MonoBehaviour
     {
         if(isPlayerColison && Input.GetKeyDown("e"))
         {
-            player.transform.position = backward;
-            currentLevelText.text = (currentLevel +1).ToString() ;
+            currentLevelText.text = (currentLevel - 1).ToString();
+            if (currentLevel == 6)
+            {
+                CameraFollow.Instance.SetLimits(backward + new Vector3(-25f, -14f), backward - new Vector3(-25f, -14f));
+                player.transform.position = backward + new Vector3(20, 0, 0);
+
+            }
+            else
+            {
+
+                CameraFollow.Instance.SetLimits(backward + new Vector3(-12.8f, -7.2f), backward - new Vector3(-12.8f, -7.2f));
+                player.transform.position = backward + new Vector3(10, 0, 0);
+
+            }
         }
     }
     public void OnTriggerEnter2D(Collider2D collision)

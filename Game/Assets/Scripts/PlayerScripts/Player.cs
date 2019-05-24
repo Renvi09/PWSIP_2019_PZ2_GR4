@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
         playerRigidbody2D = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
         playerStats = GetComponent<PlayerStats>();
-        playerStats.MovementSpeed = 3;
+        playerStats.MovementSpeed = 8;
         playerStats.CurrentHealth = 50;
     }
 

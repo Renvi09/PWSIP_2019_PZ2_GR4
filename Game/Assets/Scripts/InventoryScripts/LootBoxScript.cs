@@ -11,10 +11,6 @@ public class LootBoxScript : MonoBehaviour
     {
         lootTable = GetComponent<LootTable>();
     }
-    void Start()
-    {
-        Debug.Log(LayerMask.GetMask("Interactable"));
-    }
 
     // Update is called once per frame
     void Update()
