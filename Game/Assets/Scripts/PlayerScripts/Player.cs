@@ -182,6 +182,7 @@ public class Player : MonoBehaviour
         {
             if (interactable != null)
             {
+                UIManager.Instance.HideTooltip();
                 interactable.StopInteract();
                 interactable = null;
             }

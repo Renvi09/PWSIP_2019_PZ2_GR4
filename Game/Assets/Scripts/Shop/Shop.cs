@@ -6,9 +6,12 @@ using UnityEngine;
 public class Shop : MonoBehaviour,IInteractable
 {
     [SerializeField]
+    private ShopItem[] items;
+    [SerializeField]
     private ShopWindow shopWindow;
     public void Interact()
     {
+        shopWindow.CreatePages(items);
         shopWindow.Open();
     }
 
@@ -17,15 +20,5 @@ public class Shop : MonoBehaviour,IInteractable
         shopWindow.Close();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+ 
 }

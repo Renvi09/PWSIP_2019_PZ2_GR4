@@ -15,6 +15,8 @@ public abstract class Item : ScriptableObject,IMove,IDescribable
     private int stackSize;
     [SerializeField]
     private Quality quality;
+    [SerializeField]
+    private int price;
     private SlotScript slotscript;
     public Sprite ThisIcon
     {
@@ -61,6 +63,14 @@ public abstract class Item : ScriptableObject,IMove,IDescribable
             return title;
         }
 
+    }
+
+    public int ThisPrice
+    {
+        get
+        {
+            return price;
+        }
     }
 
     public void Remove()
