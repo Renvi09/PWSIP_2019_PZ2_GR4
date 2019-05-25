@@ -308,14 +308,14 @@ TextMesh:
     wiecz\xF3r\nw\r lokalnym kasynie.\r\nMia\u0142 dzi\u015B wyj\u0105tkowo\r\ndobry
     dzie\u0144: karty\r\ndochodzi\u0142y, przeciwnicy\r\nbyli s\u0142abi, wszystko
     sz\u0142o\r\npo Jego my\u015Bli. A\u017C do\r\npewnego rozdania.\r\n\r\nMia\u0142
-    na r\u0119ce Strita.\r\nMy\u015Bla\u0142, \u017Ce B\xF3g RNG\r\nczuwa. Postawi\u0142
-    ca\u0142y\r\ndorobek swojego \u017Cycia,\r\nsprzeda\u0142 nawet w\u0142asn\u0105\r\nmatk\u0119.\r\n\r\nNiestety,
-    okaza\u0142o si\u0119,\r\n\u017Ce piecz\u0119 nad nim\r\nobj\u0119\u0142o najgorsze
-    z\r\nb\xF3stw: Never Lucky.\r\n\r\nPrzeciwnik mia\u0142 na\r\nr\u0119ce Pokera.
-    Wacek\r\nnie mia\u0142 szans, straci\u0142\r\nwszystko: pieni\u0105dze i \r\nmatk\u0119
-    a na domiar\r\ntego popad\u0142 w d\u0142ugi.\r\n\r\nWierzyciele dali mu\r\ndwa
-    tygodnie na\r\nsp\u0142at\u0119, w przeciwnym\r\nrazie w\u0142o\u017C\u0105 mu\r\npo\u015Bliniony
-    palec w ucho.\r\n\r\nNie ma na co czeka\u0107..."
+    na r\u0119ce Strita.\r\nMy\u015Bla\u0142, \u017Ce B\xF3g RNG\r czuwa.\nPostawi\u0142
+    ca\u0142y\rdorobek\nswojego \u017Cycia,\r sprzeda\u0142\nnawet w\u0142asn\u0105\r
+    matk\u0119.\r\n\r\nNiestety, okaza\u0142o si\u0119,\r \u017Ce\npiecz\u0119 nad
+    nim\r obj\u0119\u0142o\nnajgorsze z\r b\xF3stw:\nNever Lucky.\r\n\r\nPrzeciwnik
+    mia\u0142 na\r r\u0119ce\nPokera. Wacek\r nie mia\u0142\nszans, straci\u0142\r
+    wszystko:\npieni\u0105dze i \rmatk\u0119\na na domiar\r tego\npopad\u0142 w d\u0142ugi.\r\n\r\nWierzyciele
+    dali mu\r\ndwa tygodnie na\r\nsp\u0142at\u0119, w przeciwnym\r\nrazie w\u0142o\u017C\u0105
+    mu\r po\u015Bliniony\npalec w ucho.\r\n\r\nNie ma na co czeka\u0107..."
   m_OffsetZ: 20
   m_CharacterSize: 1
   m_LineSpacing: 0.95
@@ -325,7 +325,7 @@ TextMesh:
   m_FontSize: 200
   m_FontStyle: 0
   m_RichText: 1
-  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Font: {fileID: 12800000, guid: ca4ef2dd516b93b4d88e536bcd3a4dae, type: 3}
   m_Color:
     serializedVersion: 2
     rgba: 4282036709
@@ -346,7 +346,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: ca4ef2dd516b93b4d88e536bcd3a4dae, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -374,7 +374,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1946156216}
   m_LocalRotation: {x: 0.53729963, y: 0, z: 0, w: 0.8433915}
-  m_LocalPosition: {x: 0, y: -300, z: -331}
+  m_LocalPosition: {x: 0, y: -315, z: -335}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
