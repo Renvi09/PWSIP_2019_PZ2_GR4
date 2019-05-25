@@ -12,13 +12,21 @@ public class LootTable : MonoBehaviour
 
     public void ShowLoot()
     {
-            if(!droped)
+        if(!droped)
         {
             RollLoot();
         }
-          
-            LootWindowScript.Instance.CreatePages(dropeditems);
+     
+        LootWindowScript.Instance.CreatePages(dropeditems);
        
+    }
+    private void LateUpdate()
+    {
+        if (droped && dropeditems.Count == 0)
+        {
+            Destroy(this.gameObject);
+            LootWindowScript.Instance.Close();
+        }
     }
     private void RollLoot()
     {

@@ -116,7 +116,7 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IClicable,IPoin
     {
        if(item is IUse &&useables.Count >0)
         {
-          if(useables.Peek().GetType()==item.GetType())
+          if(useables.Peek().GetType()==item.GetType() )
             {
                 useables = InventoryScript.Instance.GetUsables(item as IUse);
                 count = useables.Count;
@@ -129,11 +129,11 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IClicable,IPoin
     {
      if(ThisIUse!=null )
         {
-            //UIManager.Instance.ShowTooltip(transform.position);
+            UIManager.Instance.ShowTooltip(transform.position,(IDescribable)ThisIUse);
         }
         else if (useables.Count>0)
         {
-            //UIManager.Instance.ShowTooltip(transform.position);
+            UIManager.Instance.ShowTooltip(transform.position, (IDescribable)ThisIUse);
         }
     }
 

@@ -211,7 +211,7 @@ public class SlotScript : MonoBehaviour, IPointerClickHandler, IClicable,IPointe
             return false;
         }
         //zamienia miejscami przedmioty
-        if(from.ThisItem.GetType() != ThisItem.GetType() || from.ThisCount+ThisCount>ThisItem.ThisStackSize)
+        if(from.ThisItem.GetType() != ThisItem.GetType() ||from.ThisItem.name !=ThisItem.name ||from.ThisCount+ThisCount>ThisItem.ThisStackSize)
         {
             //kopijujem itemy do tempa z slota do zmany A
             ObservableStack<Item> tmpFrom = new ObservableStack<Item>(from.items);
@@ -228,7 +228,7 @@ public class SlotScript : MonoBehaviour, IPointerClickHandler, IClicable,IPointe
     }
     private bool MergeItems(SlotScript from)
     {
-        if (isEmpty)
+        if (isEmpty || from.ThisItem.name !=ThisItem.name)
         {
             return false;
         }

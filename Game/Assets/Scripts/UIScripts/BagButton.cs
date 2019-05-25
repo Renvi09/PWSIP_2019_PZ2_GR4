@@ -11,7 +11,8 @@ public class BagButton : MonoBehaviour,IPointerClickHandler
     private Bag bag;
     [SerializeField]
     private Sprite empty, full;
-
+    [SerializeField]
+    private int bagIndex;
     public Bag ThisBag
     {
         get
@@ -31,6 +32,14 @@ public class BagButton : MonoBehaviour,IPointerClickHandler
                 GetComponent<Image>().sprite = empty;
             }
             bag = value;
+        }
+    }
+
+    public int BagIndex
+    {
+        get
+        {
+            return bagIndex;
         }
     }
 

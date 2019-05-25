@@ -29,9 +29,9 @@ public class Player : MonoBehaviour
     private Rigidbody2D playerRigidbody2D;
     private Vector2 direction;
     // Start is called before the first frame update
-    PlayerStats playerStats;
-    float timer;
-  
+    private PlayerStats playerStats;
+    private float timer;
+    public IInteractable interactable;
    
     public float timeBetweenBullets = 1f;
     
@@ -92,10 +92,6 @@ public class Player : MonoBehaviour
     {
         PlayerAtack();
         PlayerMove();
-    }
-    public void xd()
-    {
-        Debug.Log("xd");
     }
     private void PlayerAtack()
     {
@@ -166,5 +162,30 @@ public class Player : MonoBehaviour
      
           
     }
-
+    public void Interact()
+    {
+        if (interactable != null)
+        {
+            interactable.Interact();
+        }
+    }
+    public void OnTriggerEnter2D(Collider2D collision)
+    {        
+        if (collision.tag =="LootBox")
+        {
+            interactable = collision.GetComponent<IInteractable>();
+        }
+    }
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "LootBox")
+        {
+            if (interactable != null)
+            {
+                interactable.StopInteract();
+                interactable = null;
+            }
+           
+        }
+    }
 }

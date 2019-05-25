@@ -34,10 +34,10 @@ public class CameraFollow : MonoBehaviour
 
     private void LateUpdate()
     {
-         float poX = Mathf.SmoothDamp(transform.position.x, player.transform.position.x, ref velocity.x, smothX);
+        /* float poX = Mathf.SmoothDamp(transform.position.x, player.transform.position.x, ref velocity.x, smothX);
          float poY = Mathf.SmoothDamp(transform.position.y, player.transform.position.y, ref velocity.y, smothY);
-         transform.position = new Vector3(poX, poY, transform.position.z);
-     //transform.position = new Vector3(Mathf.Clamp(player.transform.position.x, xMin,xMax), Mathf.Clamp(player.transform.position.y, yMin,yMax),-10);
+         transform.position = new Vector3(poX, poY, transform.position.z);*/
+     transform.position = new Vector3(Mathf.Clamp(player.transform.position.x, xMin,xMax), Mathf.Clamp(player.transform.position.y, yMin,yMax),-10);
     }
     public void SetLimits(Vector3 min, Vector3 max)
     {

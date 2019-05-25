@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LootBoxScript : MonoBehaviour
+public class LootBoxScript : MonoBehaviour,IInteractable
 {
     [SerializeField]
     private LootTable lootTable;
@@ -21,5 +22,10 @@ public class LootBoxScript : MonoBehaviour
     {
         lootTable.ShowLoot();
         
+    }
+
+    public void StopInteract()
+    {
+        LootWindowScript.Instance.Close();
     }
 }

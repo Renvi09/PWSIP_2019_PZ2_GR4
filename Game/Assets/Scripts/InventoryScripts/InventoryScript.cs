@@ -108,6 +108,7 @@ public class InventoryScript : MonoBehaviour
                 bagButton.ThisBag = bag;
                 bags.Add(bag);
                 bag.thisBagButton = bagButton;
+                bag.bagScript.transform.SetSiblingIndex(bagButton.BagIndex);
                 break;
             }
         }

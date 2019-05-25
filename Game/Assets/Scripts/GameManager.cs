@@ -35,11 +35,7 @@ public class GameManager : MonoBehaviour
             {
                 if(hit2D.collider.tag == "LootBox")
                 {
-                    hit2D.collider.GetComponent<LootBoxScript>().Interact();
-                }
-                else if(hit2D.collider.tag == "Vendor")
-                {
-
+                    Player.Instance.Interact();
                 }
               
             }
