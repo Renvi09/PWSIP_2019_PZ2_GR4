@@ -19,15 +19,18 @@ public class ShopWindow : MonoBehaviour
     private Shop shop;
     public void Close()
     {
+     
         shop.isOpen = false;
         canvasGroup.alpha = 0;
         canvasGroup.blocksRaycasts = false;
+        ClearButtons();
         shop = null;
        
     }
 
     public void Open(Shop shop)
     {
+       
         this.shop = shop;
         canvasGroup.alpha = 1;
         canvasGroup.blocksRaycasts = true;

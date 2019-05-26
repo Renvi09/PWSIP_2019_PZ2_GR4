@@ -22,7 +22,7 @@ public class AtackScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            collision.gameObject.GetComponent<StatHealth>().CurrentValue -= 5;
+            collision.gameObject.GetComponent<StatHealth>().CurrentValue -= PlayerStats.Instance.Damage;
         }
     }
      

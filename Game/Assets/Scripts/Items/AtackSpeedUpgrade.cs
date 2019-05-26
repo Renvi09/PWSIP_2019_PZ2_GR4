@@ -12,7 +12,7 @@ using UnityEngine;
         public void Use()
         {
             Remove();
-            Player.Instance.timeBetweenBullets -= atackSpeed;
+            Player.Instance.TimeBetweenBullets -= atackSpeed;
         }
         public override string GetDescription()
         {

@@ -24,6 +24,8 @@ public class UIManager : MonoBehaviour
 
     }
     [SerializeField]
+    private GameObject PlayerStats;
+    [SerializeField]
     private GameObject tooltip;
     [SerializeField]
     private ActionButton[] abbilityButtons;
@@ -53,6 +55,10 @@ public class UIManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.B))
         {
             InventoryScript.Instance.OpenCloseInventory();
+        }
+        if(Input.GetKeyDown(KeyCode.C))
+        {
+            OpenClose(PlayerStats.GetComponent<CanvasGroup>());
         }
     }
     public void UpdateStackSize(IClicable clicable)

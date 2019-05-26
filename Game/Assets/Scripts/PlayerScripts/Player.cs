@@ -32,9 +32,9 @@ public class Player : MonoBehaviour
     private PlayerStats playerStats;
     private float timer;
     public IInteractable interactable;
-   
-    public float timeBetweenBullets = 1f;
-    
+
+    private float timeBetweenBullets = 1f;
+
     private bool isMoving
     {
         get
@@ -44,14 +44,36 @@ public class Player : MonoBehaviour
         }
     }
 
+    public float TimeBetweenBullets
+    {
+        get
+        {
+            return timeBetweenBullets;
+        }
+
+        set
+        {
+            if (playerStats.AsLevel<5)
+            {
+                playerStats.AsLevel++;
+                timeBetweenBullets = value;
+                playerStats.AtackSpeed = 1/ TimeBetweenBullets;
+            }
+
+            
+        }
+    }
+
     void Start()
     {
         playerRigidbody2D = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
         playerStats = GetComponent<PlayerStats>();
-        playerStats.MovementSpeed = 8;
+        playerStats.MovementSpeed = 3;
         playerStats.CurrentHealth = 50;
         playerStats.Gold = 125;
+        TimeBetweenBullets = 1;
+        playerStats.Damage = 5;
     }
 
     // Update is called once per frame
@@ -96,7 +118,7 @@ public class Player : MonoBehaviour
     }
     private void PlayerAtack()
     {
-        if ((Input.GetMouseButton(0) && timer > timeBetweenBullets && !EventSystem.current.IsPointerOverGameObject()) || (Input.GetMouseButtonDown(0) && timer>timeBetweenBullets && !EventSystem.current.IsPointerOverGameObject()))
+        if ((Input.GetMouseButton(0) && timer > TimeBetweenBullets && !EventSystem.current.IsPointerOverGameObject()) || (Input.GetMouseButtonDown(0) && timer>TimeBetweenBullets && !EventSystem.current.IsPointerOverGameObject()))
         {
             timer = 0f;
             var pos = Input.mousePosition;
@@ -109,7 +131,7 @@ public class Player : MonoBehaviour
               transform.position,
                 rotation);
             bullet.transform.position = this.transform.position;
-            bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.up * 5;
+            bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.up * 8;
             Destroy(bullet, 2.0f);
         }
     }
