@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 416020d2dfef8694e949a7d6bb8e6210, type: 3}
-  m_Name: MediumHPpot
+  m_Script: {fileID: 11500000, guid: 04ddb97bb35129148b347c73357c64ba, type: 3}
+  m_Name: HealthUpgrade
   m_EditorClassIdentifier: 
-  title: Medium Health Potion
-  icon: {fileID: 21300000, guid: 1ae8b6a0c6b191b4990360b2f98a45c4, type: 3}
-  stackSize: 10
-  quality: 2
-  price: 10
-  heal: 50
+  title: Health Upgrade
+  icon: {fileID: 21300000, guid: 820ac2857de25714ebf7005efeff290c, type: 3}
+  stackSize: 0
+  quality: 3
+  price: 100
+  health: 50

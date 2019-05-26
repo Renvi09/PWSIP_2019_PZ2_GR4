@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 111735764592302986, guid: 198f723a47c4d0244ad37577f2232cd3,
         type: 3}
       propertyPath: m_Name
-      value: LevelBoss 3
+      value: LevelBoss 3 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2547012155368500780, guid: 198f723a47c4d0244ad37577f2232cd3,
         type: 3}

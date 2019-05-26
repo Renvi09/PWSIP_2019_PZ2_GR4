@@ -9,15 +9,25 @@ public class Shop : MonoBehaviour,IInteractable
     private ShopItem[] items;
     [SerializeField]
     private ShopWindow shopWindow;
+    public bool isOpen { get; set; }
     public void Interact()
     {
-        shopWindow.CreatePages(items);
-        shopWindow.Open();
+        if(!isOpen)
+        {
+            isOpen = true;
+            shopWindow.CreatePages(items);
+            shopWindow.Open(this);
+        }
+       
     }
 
     public void StopInteract()
     {
-        shopWindow.Close();
+        if (isOpen)
+        {
+            isOpen = false;
+            shopWindow.Close();
+        }
     }
 
  

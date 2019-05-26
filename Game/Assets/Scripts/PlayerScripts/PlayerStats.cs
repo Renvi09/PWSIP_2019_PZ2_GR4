@@ -34,7 +34,8 @@ public class PlayerStats : MonoBehaviour
     private float movementSpeed;
     private float maxHealth;
     private float currentHealth;
-    private float gold;
+    private int gold;
+    private float damage;
     public List<GameObject> SpellList;
     void Start()
     {
@@ -111,10 +112,12 @@ public class PlayerStats : MonoBehaviour
         set
         {
             maxHealth = value;
+            currentHealthBarFill = currentHealth / maxHealth;
+            healthBarText.text = currentHealth + " / " + maxHealth;
         }
     }
 
-    public float Gold
+    public int Gold
     {
         get
         {
@@ -125,11 +128,24 @@ public class PlayerStats : MonoBehaviour
         {
             if (value < 0)
             {
-                gold = 0f;
+                gold = 0;
             }
 
             gold = value;
             goldText.text = gold + " G ";
+        }
+    }
+
+    public float Damage
+    {
+        get
+        {
+            return damage;
+        }
+
+        set
+        {
+            damage = value;
         }
     }
 }

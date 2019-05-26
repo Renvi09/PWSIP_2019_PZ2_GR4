@@ -51,6 +51,7 @@ public class Player : MonoBehaviour
         playerStats = GetComponent<PlayerStats>();
         playerStats.MovementSpeed = 8;
         playerStats.CurrentHealth = 50;
+        playerStats.Gold = 125;
     }
 
     // Update is called once per frame

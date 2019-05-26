@@ -9,14 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d33472e7778d4c64d9d521845a25684c, type: 3}
-  m_Name: Bag
+  m_Script: {fileID: 11500000, guid: 090932e671c0e0e4686a4ee3d8cc6e87, type: 3}
+  m_Name: AtackSpeedUpgrade
   m_EditorClassIdentifier: 
-  title: Bag
-  icon: {fileID: 21300000, guid: 963d536cf52030a4cb645dc116fe96be, type: 3}
+  title: Atack Speed Upgrade
+  icon: {fileID: 21300000, guid: 86000037951fe20419d77fff6309784a, type: 3}
   stackSize: 0
-  quality: 2
+  quality: 3
   price: 5
-  slots: 16
-  bagPrefab: {fileID: 2373159216485364806, guid: 4497e7b0cd66eeb46a13d49dec013fa2,
-    type: 3}
+  atackSpeed: 0.1
