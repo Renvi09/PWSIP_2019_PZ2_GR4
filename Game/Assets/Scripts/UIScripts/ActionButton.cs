@@ -44,20 +44,9 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IClicable,IPoin
         }
     }
 
-    public Stack<IUse> Useables
-    {
-        get
-        {
-            return Useables1;
-        }
+ 
 
-        set
-        {
-            Useables1 = value;
-        }
-    }
-
-    public Stack<IUse> Useables1
+    public Stack<IUse> ThisUseables
     {
         get
         {
@@ -66,14 +55,14 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IClicable,IPoin
 
         set
         {
-            ThisIUse = value.Peek();
+            
             useables = value;
         }
     }
 
     [SerializeField]
     private Image icon;
-    // Start is called before the first frame update
+
     void Start()
     {
         ThisButton = GetComponent<Button>();
@@ -81,11 +70,6 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IClicable,IPoin
         InventoryScript.Instance.itemCountChangedEvent += new ItemCountChanged(UpdateItemCount);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     public void OnClick()
     {
         if (HandScript.Instance.ThisMove == null)
@@ -94,9 +78,9 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IClicable,IPoin
             {
                 ThisIUse.Use();
             }
-            if(Useables != null && Useables.Count >0)
+            if(ThisUseables != null && ThisUseables.Count >0)
             {
-                Useables.Peek().Use();
+                ThisUseables.Peek().Use();
             }
         }
        
@@ -117,8 +101,8 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IClicable,IPoin
     {
         if (useable is Item)
         {
-            Useables = InventoryScript.Instance.GetUsables(useable);
-            count = Useables.Count;
+            ThisUseables = InventoryScript.Instance.GetUsables(useable);
+            count = ThisUseables.Count;
             InventoryScript.Instance.FromSlot.ThisIcon.color = Color.white;
             InventoryScript.Instance.FromSlot = null;
 
@@ -128,14 +112,14 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IClicable,IPoin
             this.ThisIUse = useable;
           
         }
-        count = Useables.Count;
+        
         UpdateVisual();
         
     }
     public void UpdateVisual()
     {
         ThisIcon.sprite = HandScript.Instance.Put().ThisIcon;
-        ThisIcon.color= Color.white;
+        ThisIcon.color = Color.white;
         if(count>1)
         {
             UIManager.Instance.UpdateStackSize(this);
@@ -143,12 +127,12 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IClicable,IPoin
     }
     public void UpdateItemCount(Item item)
     {
-       if(item is IUse &&Useables.Count >0)
+       if(item is IUse &&ThisUseables.Count >0)
         {
-          if(Useables.Peek().GetType()==item.GetType() )
+          if(ThisUseables.Peek().GetType()==item.GetType() )
             {
-                Useables = InventoryScript.Instance.GetUsables(item as IUse);
-                count = Useables.Count;
+                ThisUseables = InventoryScript.Instance.GetUsables(item as IUse);
+                count = ThisUseables.Count;
                 UIManager.Instance.UpdateStackSize(this);
             }
         }
@@ -160,7 +144,7 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IClicable,IPoin
         {
             UIManager.Instance.ShowTooltip(transform.position,(IDescribable)ThisIUse);
         }
-        else if (Useables.Count>0)
+        else if (ThisUseables.Count>0)
         {
             UIManager.Instance.ShowTooltip(transform.position, (IDescribable)ThisIUse);
         }

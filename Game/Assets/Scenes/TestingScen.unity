@@ -2349,9 +2349,9 @@ RectTransform:
   m_Father: {fileID: 1474278405}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -700, y: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 340, y: 0}
   m_SizeDelta: {x: 600, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &254614224
@@ -4960,7 +4960,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
+    m_Font: {fileID: 12800000, guid: ca4ef2dd516b93b4d88e536bcd3a4dae, type: 3}
     m_FontSize: 20
     m_FontStyle: 1
     m_BestFit: 0
@@ -6664,7 +6664,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9716981, g: 0.8527984, b: 0.022917405, a: 1}
+  m_Color: {r: 1, g: 0.87190086, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -6672,9 +6672,9 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: c9f6d0e7bc8541498c9a4799ba184ede, type: 3}
+    m_Font: {fileID: 12800000, guid: ca4ef2dd516b93b4d88e536bcd3a4dae, type: 3}
     m_FontSize: 35
-    m_FontStyle: 1
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
@@ -12176,6 +12176,15 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: 1478f430c20726d4295b89226a0f0e2c, type: 2}
     quant: 6
     unlimited: 0
+  - item: {fileID: 11400000, guid: 3093f26409f5522489af7fdac085ff8a, type: 2}
+    quant: 1
+    unlimited: 0
+  - item: {fileID: 11400000, guid: 6ce8d723e7a2d994c849b06774a9a788, type: 2}
+    quant: 0
+    unlimited: 1
+  - item: {fileID: 11400000, guid: d4734e2b9fae2554d9d75570020feb24, type: 2}
+    quant: 0
+    unlimited: 1
   - item: {fileID: 11400000, guid: 6ce8d723e7a2d994c849b06774a9a788, type: 2}
     quant: 1
     unlimited: 0
