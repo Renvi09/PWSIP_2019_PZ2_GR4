@@ -245,10 +245,14 @@ public class SlotScript : MonoBehaviour, IPointerClickHandler, IClicable,IPointe
     }
     public void Clear()
     {
+        int iniCount = ThisItems.Count;
         if(items.Count>0)
         {
-            InventoryScript.Instance.OnItemCountChanged(items.Pop());
-            items.Clear();
+            for (int i = 0; i < iniCount; i++)
+            {
+                InventoryScript.Instance.OnItemCountChanged(items.Pop());
+            }
+           
            
         }
     }

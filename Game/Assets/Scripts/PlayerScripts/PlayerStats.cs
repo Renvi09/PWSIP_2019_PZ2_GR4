@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
@@ -27,6 +28,8 @@ public class PlayerStats : MonoBehaviour
     }
     //Zmienne
     [SerializeField]
+    private int lifes=1;
+    [SerializeField]
     private Text goldText;
     [SerializeField]
     private Text mHealthText;
@@ -37,12 +40,14 @@ public class PlayerStats : MonoBehaviour
     [SerializeField]
     private Text mDamageText;
     [SerializeField]
+    private Text mLifesText;
+    [SerializeField]
     public Text healthBarText;
     private Image healthBarImage;
     public GameObject HealthBar;
     private float currentHealthBarFill;
     private float movementSpeed;
-    private int msLevel=1;
+    private int msLevel=0;
     private int asLevel=0;
     private int hpLevel=1;
     private int dmgLevel=0;
@@ -52,6 +57,8 @@ public class PlayerStats : MonoBehaviour
     private int gold;
     private float damage;
     public List<GameObject> SpellList;
+
+
     void Start()
     {
         maxHealth = 100;
@@ -82,8 +89,12 @@ public class PlayerStats : MonoBehaviour
             }
             else
             {
-                msLevel++;
-                movementSpeed = value;
+
+                if(msLevel<5)
+                {
+                    msLevel++;
+                    movementSpeed = value;
+                }
             }
             mMsText.text = "Movement Speed : " + movementSpeed + " Level " + msLevel + "/5";
         }
@@ -103,9 +114,10 @@ public class PlayerStats : MonoBehaviour
             {
                 currentHealth = maxHealth;
             }
-            else if (value < 0)
+            else if (value <=0)
             {
                 currentHealth = 0f;
+                Lifes--;
             }
             else
             {
@@ -117,6 +129,7 @@ public class PlayerStats : MonoBehaviour
 
             {
                 currentHealthBarFill = 0;
+               
             }
             else
             {
@@ -210,6 +223,32 @@ public class PlayerStats : MonoBehaviour
         set
         {
             asLevel = value;
+        }
+    }
+    public int Lifes
+    {
+        get
+        {
+            return lifes;
+        }
+
+        set
+        {
+            if (lifes > value)
+            {
+                GameManager.Instance.ClearEnemies();
+                CurrentHealth = MaxHealth;
+                CameraFollow.Instance.SetLimits(new Vector3(-12.8f, -7.2f), new Vector3(12.8f, 7.2f));
+                Player.Instance.transform.position = new Vector3(0, 0, 0);
+               
+            }
+            lifes = value;
+            if (value <= 0)
+            {
+                SceneManager.LoadScene("Menu");
+            }
+
+            mLifesText.text = "Lifes : " + lifes;
         }
     }
 }

@@ -23,7 +23,7 @@ public class StatHealth : MonoBehaviour
             {
                 currentValue = maxValue;
             }
-            else if (value <0)
+            else if (value <1)
             {
                 currentValue = 0;
                 PlayerStats.Instance.Gold += 50;
@@ -42,7 +42,7 @@ public class StatHealth : MonoBehaviour
             }
             else
             {
-                Debug.Log(currentFill);
+                
                 currentFill = currentValue / maxValue;
             }
           

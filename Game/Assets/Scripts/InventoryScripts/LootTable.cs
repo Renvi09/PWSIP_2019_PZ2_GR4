@@ -35,7 +35,7 @@ public class LootTable : MonoBehaviour
             int roll = Random.Range(0, 100);
             if(roll<=item.ThisDropChance)
             {
-                dropeditems.Add(item.ThisItem);
+                dropeditems.Add(Instantiate(item.ThisItem));
             }
           
         }

@@ -6,6 +6,10 @@ using UnityEngine.EventSystems;
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
+    [SerializeField]
+    private List<GameObject> enemies;
+    [SerializeField]
+    private List<GameObject> lootBoxes;
     //zwraca  instancje
     public static GameManager Instance
     {
@@ -88,11 +92,49 @@ public class GameManager : MonoBehaviour
     private void MakePointList()
     {
         LevelTeleportList = new List<Vector3>();
-        LevelTeleportList.Add(new Vector3(-8, 0, 0));
+        LevelTeleportList.Add(new Vector3(0, 0, 0));
         for (int i = 0; i <= LevelSize; i++)
         {
             LevelTeleportList.Add(new Vector3(100 * i, 100, 0));
         }
         LevelTeleportList.Add(new Vector3(0, 0, 0));
+    }
+    public void RespawnEnemy(Transform center)
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            for (int j = 0; j < enemies.Count; j++)
+            {
+                Instantiate(
+                        enemies[Random.Range(0,3)],
+                       center.position - new Vector3(Random.Range(-12f, 12f), Random.Range(-7f, 7f)),
+                       transform.rotation
+
+
+                        );
+            }
+        }
+    
+    }
+    public  bool isEnemy()
+   {
+        if(GameObject.FindGameObjectsWithTag("Enemy").Length==0)
+        {
+            return false;
+        }
+        else
+        return true;
+    }
+    public void DropLoot(Transform center)
+    {
+        Instantiate(lootBoxes[Random.Range(0, lootBoxes.Count - 1)],center.position,transform.rotation);
+    }
+    public void ClearEnemies()
+    {
+        var objects = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach(GameObject ob in objects)
+        {
+            Destroy(ob);
+        }
     }
 }

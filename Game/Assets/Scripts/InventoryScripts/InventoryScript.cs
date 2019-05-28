@@ -70,11 +70,16 @@ public class InventoryScript : MonoBehaviour
     private BagButton[] bagButtons;
     private List<Bag> bags = new List<Bag>();
     // Start is called before the first frame update
+    private void Start()
+    {
+        OpenCloseInventory();
+    }
     private void Awake()
     {
         Bag bag = (Bag)Instantiate(items[0]);
         bag.Slots = 16;
         bag.Use();
+      
 
     }
     private void Update()
@@ -199,5 +204,20 @@ public class InventoryScript : MonoBehaviour
             itemCountChangedEvent.Invoke(item);
         }
 
+    }
+    public int GetItemCount(string type)
+    {
+        int itemCount = 0;
+        foreach(Bag bag in bags)
+        {
+            foreach (SlotScript slot in bag.bagScript.ThisSlots)
+            {
+                if(!slot.isEmpty && slot.ThisItem.ThisTitle.ToLower() ==type.ToLower())
+                {
+                    itemCount += slot.ThisItems.Count;
+                }
+            }
+        }
+        return itemCount;
     }
 }
