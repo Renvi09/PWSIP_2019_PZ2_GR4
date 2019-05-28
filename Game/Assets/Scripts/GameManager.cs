@@ -50,6 +50,8 @@ public class GameManager : MonoBehaviour
     public List<GameObject> LevelListBoss;
     public List<Vector3> LevelTeleportList;
     private int LevelSize = 6;
+    public List<GameObject> enemyList= new List<GameObject>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -105,20 +107,21 @@ public class GameManager : MonoBehaviour
         {
             for (int j = 0; j < enemies.Count; j++)
             {
-                Instantiate(
+               GameObject enemy= Instantiate(
                         enemies[Random.Range(0,3)],
-                       center.position - new Vector3(Random.Range(-12f, 12f), Random.Range(-7f, 7f)),
+                       center.position - new Vector3(Random.Range(-8f, 12f), Random.Range(-7f, 7f)),
                        transform.rotation
 
 
                         );
+                enemyList.Add(enemy);
             }
         }
     
     }
     public  bool isEnemy()
    {
-        if(GameObject.FindGameObjectsWithTag("Enemy").Length==0)
+        if (enemyList.Count ==0)
         {
             return false;
         }
@@ -131,9 +134,10 @@ public class GameManager : MonoBehaviour
     }
     public void ClearEnemies()
     {
-        var objects = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach(GameObject ob in objects)
+        
+        foreach(GameObject ob in enemyList)
         {
+            enemyList.Remove(ob);
             Destroy(ob);
         }
     }

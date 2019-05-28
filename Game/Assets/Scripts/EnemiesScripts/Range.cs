@@ -45,6 +45,7 @@ public class Range : EnemyScript
     {
         if(collision.gameObject.tag=="player")
         {
+            
             PlayerStats.Instance.CurrentHealth -= dmg * 2;
         }
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Map : MonoBehaviour
 {
-    private bool drop=true;
+    private bool drop=false;
     private int droped=0;
     private bool spawned = false;
     // Start is called before the first frame update
@@ -16,23 +16,9 @@ public class Map : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(!spawned &&collision.tag=="Player")
-        {
-            spawned = true;
-            GameManager.Instance.RespawnEnemy(this.transform);
-        }
-      
-        
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
         if (drop)
         {
-        
+
             if (droped < 1 && !GameManager.Instance.isEnemy())
             {
                 drop = false;
@@ -41,6 +27,18 @@ public class Map : MonoBehaviour
             }
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(!spawned &&collision.tag=="Player")
+        {
+            spawned = true;
+            GameManager.Instance.RespawnEnemy(this.transform);
+            drop = true;
+        }
+      
+        
+    }
+}
   
 
-}
+

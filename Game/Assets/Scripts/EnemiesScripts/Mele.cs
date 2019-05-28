@@ -45,6 +45,7 @@ public class Mele : EnemyScript
     {
         if(collision.tag=="Player")
         {
+            GameManager.Instance.enemyList.Remove(this.gameObject);
             collision.GetComponent<PlayerStats>().CurrentHealth -= dmg;
             Destroy(this.gameObject);
         }
