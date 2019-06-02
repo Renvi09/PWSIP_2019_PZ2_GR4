@@ -1,18 +1,43 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestGiver : MonoBehaviour
+public class QuestGiver : MonoBehaviour,IInteractable
 {
-
+    [SerializeField]
+    public CanvasGroup canvas;
     [SerializeField]
     private Quest[] quests;
-    //debug
-    [SerializeField]
-    private QuestLog tmpLog;
-    private void Awake()
+
+    public Quest[] Quests
     {
-        tmpLog.AcceptQuest(quests[0]);
-        tmpLog.AcceptQuest(quests[1]);
+        get
+        {
+            return quests;
+        }
+
+        set
+        {
+            quests = value;
+        }
     }
+
+    public void Interact()
+    {
+        if(canvas.alpha==0)
+        {
+            QuestWindow.Instance.ShowQuests(this);
+            UIManager.Instance.OpenClose(canvas);
+        }
+        
+    }
+
+    public void StopInteract()
+    {
+        if (canvas.alpha == 1)
+            UIManager.Instance.OpenClose(canvas);
+    }
+
+   
 }

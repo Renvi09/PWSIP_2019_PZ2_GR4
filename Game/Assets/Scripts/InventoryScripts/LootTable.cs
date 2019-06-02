@@ -24,8 +24,9 @@ public class LootTable : MonoBehaviour
     {
         if (droped && dropeditems.Count == 0)
         {
-            Destroy(this.gameObject);
             LootWindowScript.Instance.Close();
+            Destroy(this.gameObject);
+           
         }
     }
     private void RollLoot()
