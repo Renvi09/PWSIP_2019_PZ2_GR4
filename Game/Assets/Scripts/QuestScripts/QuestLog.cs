@@ -24,6 +24,7 @@ public class QuestLog : MonoBehaviour
 
     }
     private List<QuestScript> questScripts = new List<QuestScript>();
+    private List<Quest> quests = new List<Quest>();
     private CanvasGroup canvas;
     [SerializeField]
     private GameObject questPrefab;
@@ -52,16 +53,28 @@ public class QuestLog : MonoBehaviour
     }
     public void AcceptQuest(Quest quest)
     {
-        foreach(CollectObjective ob in quest.ThisCollectObjectives)
+        foreach (CollectObjective ob in quest.ThisCollectObjectives)
         {
             InventoryScript.Instance.itemCountChangedEvent += new ItemCountChanged(ob.UpdateItemCount);
+            ob.UpdateItemCount();
         }
+        foreach (Kill ob in quest.KillObjectives)
+        {
+            GameManager.Instance.KillConfirmedEvent += new KillConfirmed(ob.UpdateKillCount);
+        }
+        foreach (Gold ob in quest.GoldObjectives)
+        {
+            PlayerStats.Instance.GoldChangeEvent += new GoldChange(ob.UpdateGoldCount);
+            PlayerStats.Instance.Gold = PlayerStats.Instance.Gold;
+        }
+        quests.Add(quest);
         GameObject go = Instantiate(questPrefab, questParent);
         QuestScript qs = go.GetComponent<QuestScript>();
         qs.ThisQuest = quest;
         quest.ThisQuestScript = qs;
         questScripts.Add(qs);
         go.GetComponent<Text>().text = quest.ThisTitle;
+        ChectCompletion();
     }
     public void ShowDescription(Quest quest)
     {
@@ -76,6 +89,14 @@ public class QuestLog : MonoBehaviour
             {
                 obj += ob.ThisType + " : " + ob.ThisCurrentAmount + "/" + ob.ThisAmount + "\n";
             }
+            foreach (Objective ob in quest.KillObjectives)
+            {
+                obj += ob.ThisType + " : " + ob.ThisCurrentAmount + "/" + ob.ThisAmount + "\n";
+            }
+            foreach (Objective ob in quest.GoldObjectives)
+            {
+                obj += ob.ThisType + " : " + ob.ThisCurrentAmount + "/" + ob.ThisAmount + "\n";
+            }
             selectedQuest = quest;
             questDescription.text = string.Format("<b>{0}</b>\n<size=12>{1}</size>{2}", quest.ThisTitle, quest.ThisDescription, obj);
         }
@@ -85,11 +106,16 @@ public class QuestLog : MonoBehaviour
     {
         ShowDescription(selectedQuest);
     }
-    public void ChectCopmletion()
+    public void ChectCompletion()
     {
         foreach (QuestScript qs in questScripts)
         {
             qs.IsComplete();
         }
+    }
+    public bool HasQuest(Quest quest)
+    {
+        
+        return quests.Exists(x=>x.ThisTitle ==quest.ThisTitle);
     }
 }

@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+public delegate void GoldChange();
 public class PlayerStats : MonoBehaviour
 {
 
-
+    public event GoldChange GoldChangeEvent;
     private static PlayerStats instance;
     //zwraca  instancje
     public static PlayerStats Instance
@@ -175,6 +175,7 @@ public class PlayerStats : MonoBehaviour
             }
 
             gold = value;
+            OnGoldChange();
             goldText.text = gold + " G ";
         }
     }
@@ -249,6 +250,13 @@ public class PlayerStats : MonoBehaviour
             }
 
             mLifesText.text = "Lifes : " + lifes;
+        }
+    }
+    public void OnGoldChange()
+    {
+        if (GoldChangeEvent != null)
+        {
+            GoldChangeEvent();
         }
     }
 }

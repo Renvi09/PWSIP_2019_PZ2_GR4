@@ -28,6 +28,7 @@ public class StatHealth : MonoBehaviour
                 currentValue = 0;
                 PlayerStats.Instance.Gold += 50;
                 GameManager.Instance.enemyList.Remove(this.gameObject);
+                GameManager.Instance.OnKillConfirmed(GetComponent<EnemyScript>());
                 Destroy(this.gameObject);
                 
 

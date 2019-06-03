@@ -365,6 +365,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   dmg: 50
+  type: Ghost
   speed: 1
 --- !u!114 &5562779682534951328
 MonoBehaviour:

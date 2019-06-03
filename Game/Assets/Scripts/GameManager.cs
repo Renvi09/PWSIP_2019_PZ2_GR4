@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-
+public delegate void KillConfirmed(EnemyScript enemy);
 public class GameManager : MonoBehaviour
 {
+    public event KillConfirmed KillConfirmedEvent;
     private static GameManager instance;
     [SerializeField]
     private List<GameObject> enemies;
@@ -139,6 +140,13 @@ public class GameManager : MonoBehaviour
         {
             enemyList.Remove(ob);
             Destroy(ob);
+        }
+    }
+    public void OnKillConfirmed(EnemyScript enemy)
+    {
+        if(KillConfirmedEvent !=null)
+        {
+            KillConfirmedEvent(enemy);
         }
     }
 }

@@ -11,6 +11,10 @@ public class Quest
     public QuestScript ThisQuestScript { get; set; }
     [SerializeField]
     private CollectObjective[] collectObjectives;
+    [SerializeField]
+    private Kill[] killObjectives;
+    [SerializeField]
+    private Gold[] goldObjectives;
     public string ThisTitle
     {
         get
@@ -57,7 +61,38 @@ public class Quest
                 }
                 
             }
+            foreach (Objective ob in KillObjectives)
+            {
+                if (!ob.isComplete)
+                {
+                    return false;
+                }
+            }
+            foreach (Objective ob in GoldObjectives)
+            {
+                if (!ob.isComplete)
+                {
+                    return false;
+                }
+            }
             return true;
+        }
+    }
+
+    public Gold[] GoldObjectives
+    {
+        get
+        {
+            return goldObjectives;
+        }
+
+    }
+
+    public Kill[] KillObjectives
+    {
+        get
+        {
+            return killObjectives;
         }
     }
 
@@ -128,17 +163,28 @@ public class CollectObjective : Objective
         {
             ThisCurrentAmount = InventoryScript.Instance.GetItemCount(ThisType);
             QuestLog.Instance.UpdateSelected();
-            QuestLog.Instance.ChectCopmletion();
+            QuestLog.Instance.ChectCompletion();
 
         }
+    }
+    public void UpdateItemCount()
+    {      
+            ThisCurrentAmount = InventoryScript.Instance.GetItemCount(ThisType);
+            QuestLog.Instance.UpdateSelected();
+            QuestLog.Instance.ChectCompletion();       
     }
 }
 [System.Serializable]
 public class Kill : Objective
 {
-    public void UpdateKillCount()
+    public void UpdateKillCount(EnemyScript enemy)
     {
-
+        if(ThisType==enemy.ThisType)
+        {
+            ThisCurrentAmount++;
+            QuestLog.Instance.UpdateSelected();
+            QuestLog.Instance.ChectCompletion();
+        }
     }
 }
 [System.Serializable]
@@ -148,7 +194,7 @@ public class Gold : Objective
     {
         ThisCurrentAmount = PlayerStats.Instance.Gold;
         QuestLog.Instance.UpdateSelected();
-        QuestLog.Instance.ChectCopmletion();
+        QuestLog.Instance.ChectCompletion();
 
     }
 }
