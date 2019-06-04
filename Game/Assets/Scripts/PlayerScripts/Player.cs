@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
         playerStats = GetComponent<PlayerStats>();
         playerStats.MovementSpeed = 3;
         playerStats.CurrentHealth = 50;
-        playerStats.Gold = 2500;
+        playerStats.Gold = 9990;
         TimeBetweenBullets = 1f;
         playerStats.Damage = 5;
         playerStats.Lifes = 1;

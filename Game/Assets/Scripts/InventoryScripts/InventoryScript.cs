@@ -220,4 +220,26 @@ public class InventoryScript : MonoBehaviour
         }
         return itemCount;
     }
+    public Stack<Item> GetItems(string type,int count)
+    {
+        Stack<Item> items = new Stack<Item>();
+        foreach (Bag bag in bags)
+        {
+            foreach (SlotScript slot in bag.bagScript.ThisSlots)
+            {
+                if (!slot.isEmpty && slot.ThisItem.ThisTitle.ToLower() == type.ToLower())
+                {
+                    foreach (Item item in slot.ThisItems)
+                    {
+                        items.Push(item);
+                        if(items.Count==count)
+                        {
+                            return items;
+                        }
+                    }
+                }
+            }
+        }
+        return items;
+    }
 }

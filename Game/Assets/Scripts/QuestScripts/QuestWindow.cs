@@ -86,6 +86,7 @@ public class QuestWindow : MonoBehaviour
         questArea.gameObject.SetActive(true);
         questDescription.gameObject.SetActive(false);
         ShowQuests(questGiver);
+      
 
     }
     public void Accept()
@@ -103,6 +104,21 @@ public class QuestWindow : MonoBehaviour
                 {
                     questGiver.Quests[i] = null;
                 }
+            }
+            foreach(CollectObjective ob in selectedQuest.ThisCollectObjectives)
+            {
+                InventoryScript.Instance.itemCountChangedEvent -= new ItemCountChanged(ob.UpdateItemCount);
+                ob.Complete();
+            }
+            foreach (Kill ob in selectedQuest.KillObjectives)
+            {
+                GameManager.Instance.KillConfirmedEvent -= new KillConfirmed(ob.UpdateKillCount);
+
+            }
+            foreach (Gold ob in selectedQuest.GoldObjectives)
+            {
+                PlayerStats.Instance.GoldChangeEvent -= new GoldChange(ob.UpdateGoldCount);
+                PlayerStats.Instance.Gold -= ob.ThisAmount;
             }
             Back();
         }

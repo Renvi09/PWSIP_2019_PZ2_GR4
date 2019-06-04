@@ -173,6 +173,14 @@ public class CollectObjective : Objective
             QuestLog.Instance.UpdateSelected();
             QuestLog.Instance.ChectCompletion();       
     }
+    public void Complete()
+    {
+        Stack<Item> items = InventoryScript.Instance.GetItems(ThisType, ThisAmount);
+        foreach (Item item in items)
+        {
+            item.Remove();
+        }
+    }
 }
 [System.Serializable]
 public class Kill : Objective

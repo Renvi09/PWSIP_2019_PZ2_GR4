@@ -61,6 +61,7 @@ public class QuestLog : MonoBehaviour
         foreach (Kill ob in quest.KillObjectives)
         {
             GameManager.Instance.KillConfirmedEvent += new KillConfirmed(ob.UpdateKillCount);
+            
         }
         foreach (Gold ob in quest.GoldObjectives)
         {
