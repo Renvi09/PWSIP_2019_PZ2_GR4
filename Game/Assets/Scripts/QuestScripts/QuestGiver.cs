@@ -8,9 +8,9 @@ public class QuestGiver : MonoBehaviour,IInteractable
     [SerializeField]
     public CanvasGroup canvas;
     [SerializeField]
-    private Quest[] quests;
+    private List<Quest> quests;
 
-    public Quest[] Quests
+    public List<Quest> Quests
     {
         get
         {

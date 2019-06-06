@@ -86,6 +86,7 @@ public class QuestLog : MonoBehaviour
                 selectedQuest.ThisQuestScript.DeSelect();
             }
             string obj = "\nObjectives\n";
+            string rew = "\nReward\n";
             foreach (Objective ob in quest.ThisCollectObjectives)
             {
                 obj += ob.ThisType + " : " + ob.ThisCurrentAmount + "/" + ob.ThisAmount + "\n";
@@ -99,7 +100,16 @@ public class QuestLog : MonoBehaviour
                 obj += ob.ThisType + " : " + ob.ThisCurrentAmount + "/" + ob.ThisAmount + "\n";
             }
             selectedQuest = quest;
-            questDescription.text = string.Format("<b>{0}</b>\n<size=12>{1}</size>{2}", quest.ThisTitle, quest.ThisDescription, obj);
+            if (selectedQuest.ThisTitle == "Pay Debts")
+            {
+
+                questDescription.text = string.Format("<b>{0}</b>\n<size=12>{1}</size>{2}{3}Win Game.", quest.ThisTitle, quest.ThisDescription, obj, rew);
+            }
+            else
+            {
+                questDescription.text = string.Format("<b>{0}</b>\n<size=12>{1}</size>{2}{3}{4}G", quest.ThisTitle, quest.ThisDescription, obj, rew, quest.ThisReward);
+            }
+         
         }
 
     }

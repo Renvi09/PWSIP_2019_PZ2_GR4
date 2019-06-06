@@ -3277,7 +3277,7 @@ GameObject:
   - component: {fileID: 282678025}
   m_Layer: 9
   m_Name: NPC_ Debt
-  m_TagString: LootBox
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3385,6 +3385,7 @@ MonoBehaviour:
   canvas: {fileID: 2303194}
   quests:
   - title: Health is important
+    reward: 0
     description: Get Health Potions
     collectObjectives:
     - amount: 5
@@ -3392,6 +3393,7 @@ MonoBehaviour:
     killObjectives: []
     goldObjectives: []
   - title: Pay Debts
+    reward: 0
     description: Get 10000 Gold.
     collectObjectives: []
     killObjectives: []
@@ -3399,6 +3401,7 @@ MonoBehaviour:
     - amount: 10000
       type: Gold
   - title: Kill Ghots
+    reward: 0
     description: Kill 5 Ghots.
     collectObjectives: []
     killObjectives:
@@ -10685,12 +10688,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1278545965}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d14eaddb2bcc0c74088afac3839c3e6d, type: 3}
+  m_Script: {fileID: 11500000, guid: 571f1bcca34c1a14394680143853aac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forward: {x: 0, y: 100, z: 0}
+  mapStart: {x: 0, y: 100, z: 0}
   currentLevel: 0
-  currentLevelText: {fileID: 115060224}
 --- !u!1 &1294045593
 GameObject:
   m_ObjectHideFlags: 0
@@ -15524,7 +15526,7 @@ GameObject:
   - component: {fileID: 1906354265}
   m_Layer: 9
   m_Name: NPC_BlackMarket
-  m_TagString: LootBox
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15736,7 +15738,7 @@ GameObject:
   - component: {fileID: 1948703600}
   m_Layer: 9
   m_Name: NPC_Shop
-  m_TagString: LootBox
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16488,8 +16490,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2037885430}
   m_HandleRect: {fileID: 2037885429}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 0.99999994
+  m_Value: 1
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -17123,18 +17125,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2a0c49d387141446a3c498179a89b62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maps: []
+  upgrades: {fileID: 1906354265}
+  basicShop: {fileID: 1948703600}
+  questGiver: {fileID: 282678025}
   enemies:
   - {fileID: 2538416676696370321, guid: 4e1cfd8ef99872946939e3fd82175465, type: 3}
   - {fileID: 5562779682534951334, guid: 8e3ee53f06d49d54f803f5cacebefe88, type: 3}
   - {fileID: 7847416938701795940, guid: c45c16ca1da69ae42aaf91fda01eb316, type: 3}
+  loot: []
   lootBoxes:
   - {fileID: 6931427158761755351, guid: 2739fda013ef435439c7fd588c002b06, type: 3}
+  questList:
+  - title: 'I am best '
+    reward: 0
+    description: win game
+    collectObjectives:
+    - amount: 5
+      type: Damage Upgrade
+    killObjectives: []
+    goldObjectives: []
+  - title: x2x3x4
+    reward: 0
+    description: xddddd
+    collectObjectives:
+    - amount: 5
+      type: Damage Upgrade
+    killObjectives: []
+    goldObjectives: []
+  - title: x2x3x4
+    reward: 0
+    description: xddddd
+    collectObjectives:
+    - amount: 5
+      type: Damage Upgrade
+    killObjectives: []
+    goldObjectives: []
   LevelListNormal:
   - {fileID: 1295444372629823666, guid: fe13777a079d2084393aa0e8c07c8811, type: 3}
   - {fileID: 6742329996722544856, guid: b8929cd58f2c87a43b907704323475a9, type: 3}
   - {fileID: 6728355169475617890, guid: acea35341bc31274486a777b358b10b4, type: 3}
-  - {fileID: 1325932309217643645, guid: af40601c5e5acf74280a52c3245d4321, type: 3}
-  - {fileID: 5978521779326774585, guid: 120378cef86e65645a7416efa09462e6, type: 3}
   LevelListBoss:
   - {fileID: 8674590508111557967, guid: cf36b4b5209a02e409de2eccad661fc7, type: 3}
   - {fileID: 8674590508111557967, guid: cf36b4b5209a02e409de2eccad661fc7, type: 3}

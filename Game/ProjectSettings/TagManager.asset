@@ -8,6 +8,8 @@ TagManager:
   - LevelText
   - Enemy
   - LootBox
+  - Map
+  - NPC
   layers:
   - Default
   - TransparentFX

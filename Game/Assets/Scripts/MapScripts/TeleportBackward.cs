@@ -20,9 +20,10 @@ public class TeleportBackward : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isPlayerColison && Input.GetKeyDown("e"))
+        if(isPlayerColison && Input.GetKeyDown("e") && !GameManager.Instance.isEnemy())
         {
             currentLevelText.text = (currentLevel - 1).ToString();
+          
             if (currentLevel == 6)
             {
                 CameraFollow.Instance.SetLimits(backward + new Vector3(-25f, -14f), backward - new Vector3(-25f, -14f));
@@ -35,6 +36,13 @@ public class TeleportBackward : MonoBehaviour
                 CameraFollow.Instance.SetLimits(backward + new Vector3(-12.8f, -7.2f), backward - new Vector3(-12.8f, -7.2f));
                 player.transform.position = backward + new Vector3(10, 0, 0);
 
+            }
+            if (currentLevel == 1 && GameManager.Instance.maps.Count>0)
+            {
+                GameManager.Instance.DayCount += 1;
+                GameManager.Instance.ClearEnemies();
+                GameManager.Instance.ClearMaps();
+                return;
             }
         }
     }

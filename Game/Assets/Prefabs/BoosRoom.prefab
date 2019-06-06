@@ -1037,7 +1037,7 @@ GameObject:
   - component: {fileID: 8674590508111557966}
   m_Layer: 0
   m_Name: BoosRoom
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

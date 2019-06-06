@@ -81,34 +81,6 @@ public class Player : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-       
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            Debug.Log(playerStats.CurrentHealth);
-            playerStats.CurrentHealth += 5;
-            
-
-        }
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            Debug.Log(playerStats.CurrentHealth);
-            playerStats.CurrentHealth -= 5 ;
-          
-
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha0))
-        {
-            var ennn = (GameObject)Instantiate(
-               enemy,
-              transform.position- new Vector3(10,10,0),
-                transform.rotation);
-            ennn.GetComponent<EnemyAtack>().damage = 5;
-            ennn.GetComponent<StatHealth>().maxValue = 150;
-
-            ennn.GetComponent<StatHealth>().CurrentValue = 150;
-            ennn.GetComponent<EnemyScript>().target = this.gameObject.transform;
-
-        }
         AnimationLayerControl();
     }
 
@@ -194,15 +166,15 @@ public class Player : MonoBehaviour
         }
     }
     public void OnTriggerEnter2D(Collider2D collision)
-    {        
-        if (collision.tag =="LootBox")
+    {
+        if (collision.tag == "LootBox" || collision.tag == "NPC")
         {
             interactable = collision.GetComponent<IInteractable>();
         }
     }
     public void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "LootBox")
+        if (collision.tag == "LootBox" || collision.tag == "NPC")
         {
             if (interactable != null)
             {

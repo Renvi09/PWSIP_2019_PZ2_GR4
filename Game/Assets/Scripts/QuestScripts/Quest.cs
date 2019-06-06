@@ -7,6 +7,8 @@ public class Quest
     [SerializeField]
     private string title;
     [SerializeField]
+    private int reward;
+    [SerializeField]
     private string description;
     public QuestScript ThisQuestScript { get; set; }
     [SerializeField]
@@ -93,6 +95,19 @@ public class Quest
         get
         {
             return killObjectives;
+        }
+    }
+
+    public int ThisReward
+    {
+        get
+        {
+            return reward;
+        }
+
+        set
+        {
+            reward = value;
         }
     }
 

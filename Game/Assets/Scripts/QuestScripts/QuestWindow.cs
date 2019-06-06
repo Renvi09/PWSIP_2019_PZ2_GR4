@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class QuestWindow : MonoBehaviour
@@ -71,12 +72,22 @@ public class QuestWindow : MonoBehaviour
             acceptButton.SetActive(true);
 
         }
+        string obj = "\nObjectives\n";
+        string rew = "\nReward\n";
         backButton.SetActive(true);
         questArea.gameObject.SetActive(false);
         questDescription.gameObject.SetActive(true);
-      
-           
-            questDescription.GetComponent<Text>().text = string.Format("<b>{0}</b>\n<size=12>{1}</size>", quest.ThisTitle, quest.ThisDescription);
+
+        if (selectedQuest.ThisTitle == "Pay Debts")
+        {
+
+           questDescription.GetComponent<Text>().text= string.Format("<b>{0}</b>\n<size=12>{1}</size>{2}Win Game.", quest.ThisTitle, quest.ThisDescription,  rew);
+        }
+        else
+        {
+             questDescription.GetComponent<Text>().text = string.Format("<b>{0}</b>\n<size=12>{1}</size>{2}{3}G", quest.ThisTitle, quest.ThisDescription, rew, quest.ThisReward);
+        }
+        
     }
     public void Back()
     {
@@ -98,11 +109,17 @@ public class QuestWindow : MonoBehaviour
     {
         if(selectedQuest.isComplete)
         {
-            for (int i = 0; i < questGiver.Quests.Length; i++)
+            for (int i = 0; i < questGiver.Quests.Count; i++)
             {
                 if(selectedQuest==questGiver.Quests[i])
                 {
-                    questGiver.Quests[i] = null;
+                    if (selectedQuest.ThisTitle == "Pay Debts")
+                    {
+                        SceneManager.LoadScene("Credits");
+                            return;
+                    }
+                    PlayerStats.Instance.Gold += selectedQuest.ThisReward;
+                    questGiver.Quests.Remove(selectedQuest);
                 }
             }
             foreach(CollectObjective ob in selectedQuest.ThisCollectObjectives)

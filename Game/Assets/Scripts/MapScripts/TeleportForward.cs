@@ -21,7 +21,7 @@ public class TeleportForward : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isPlayerColison && Input.GetKeyDown("e"))
+        if (isPlayerColison && Input.GetKeyDown("e") && !GameManager.Instance.isEnemy())
         {
           
           
@@ -30,6 +30,11 @@ public class TeleportForward : MonoBehaviour
             {
                 CameraFollow.Instance.SetLimits(forward + new Vector3(-25f, -14f), forward - new Vector3(-25f, -14f));
                 player.transform.position = forward - new Vector3(20, 0, 0);
+               
+                    GameManager.Instance.ClearEnemies();
+                    GameManager.Instance.ClearMaps();
+                    return;
+                
 
             }
             else
