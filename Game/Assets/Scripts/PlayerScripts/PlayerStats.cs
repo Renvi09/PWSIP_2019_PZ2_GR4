@@ -235,6 +235,12 @@ public class PlayerStats : MonoBehaviour
 
         set
         {
+            if (value <= 0)
+            {
+                SceneManager.LoadScene("GameOver");
+                return;
+            }
+
             if (lifes > value)
             {
                 GameManager.Instance.ClearEnemies();
@@ -244,10 +250,7 @@ public class PlayerStats : MonoBehaviour
                
             }
             lifes = value;
-            if (value <= 0)
-            {
-                SceneManager.LoadScene("Menu");
-            }
+        
 
             mLifesText.text = "Lifes : " + lifes;
         }
