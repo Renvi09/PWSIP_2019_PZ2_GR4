@@ -3385,7 +3385,7 @@ MonoBehaviour:
   canvas: {fileID: 2303194}
   quests:
   - title: Health is important
-    reward: 0
+    reward: 500
     description: Get Health Potions
     collectObjectives:
     - amount: 5
@@ -3401,7 +3401,7 @@ MonoBehaviour:
     - amount: 10000
       type: Gold
   - title: Kill Ghots
-    reward: 0
+    reward: 250
     description: Kill 5 Ghots.
     collectObjectives: []
     killObjectives:
