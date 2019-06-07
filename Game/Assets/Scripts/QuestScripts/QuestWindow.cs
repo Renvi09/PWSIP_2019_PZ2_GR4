@@ -120,6 +120,7 @@ public class QuestWindow : MonoBehaviour
                     }
                     PlayerStats.Instance.Gold += selectedQuest.ThisReward;
                     questGiver.Quests.Remove(selectedQuest);
+                    
                 }
             }
             foreach(CollectObjective ob in selectedQuest.ThisCollectObjectives)

@@ -23,8 +23,23 @@ public class QuestLog : MonoBehaviour
 
 
     }
+
+    public List<Quest> Quests
+    {
+        get
+        {
+            return quests;
+        }
+
+        set
+        {
+            quests = value;
+        }
+    }
+
     private List<QuestScript> questScripts = new List<QuestScript>();
     private List<Quest> quests = new List<Quest>();
+    private List<GameObject> questsObjects = new List<GameObject>();
     private CanvasGroup canvas;
     [SerializeField]
     private GameObject questPrefab;
@@ -44,7 +59,10 @@ public class QuestLog : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.J))
         {
+            
             OpenClose();
+           
+
         }
     }
     public void OpenClose()
@@ -68,8 +86,9 @@ public class QuestLog : MonoBehaviour
             PlayerStats.Instance.GoldChangeEvent += new GoldChange(ob.UpdateGoldCount);
             PlayerStats.Instance.Gold = PlayerStats.Instance.Gold;
         }
-        quests.Add(quest);
+        Quests.Add(quest);
         GameObject go = Instantiate(questPrefab, questParent);
+        questsObjects.Add(go);
         QuestScript qs = go.GetComponent<QuestScript>();
         qs.ThisQuest = quest;
         quest.ThisQuestScript = qs;
@@ -127,6 +146,7 @@ public class QuestLog : MonoBehaviour
     public bool HasQuest(Quest quest)
     {
         
-        return quests.Exists(x=>x.ThisTitle ==quest.ThisTitle);
+        return Quests.Exists(x=>x.ThisTitle ==quest.ThisTitle);
     }
+
 }

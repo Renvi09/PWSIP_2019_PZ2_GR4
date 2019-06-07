@@ -18,11 +18,11 @@ public class IntroManager : MonoBehaviour
 
         position += localUp * speed * Time.deltaTime;
         transform.position = position;
-        if (timer >120)
+        if (timer >85)
         {
             SceneManager.LoadScene("TestingScen");
         }
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0) && timer > 2)
         {
             SceneManager.LoadScene("TestingScen");
         }

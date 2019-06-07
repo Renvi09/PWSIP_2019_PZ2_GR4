@@ -6,6 +6,8 @@ public class Range : EnemyScript
 {
     private float timer = 0;
     private float timeBetweenBullets = 0.5f;
+    [SerializeField]
+    private GameObject buttel;
     // Start is called before the first frame update
     void Start()
     {

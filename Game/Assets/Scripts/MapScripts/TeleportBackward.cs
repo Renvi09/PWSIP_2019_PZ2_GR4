@@ -39,9 +39,8 @@ public class TeleportBackward : MonoBehaviour
             }
             if (currentLevel == 1 && GameManager.Instance.maps.Count>0)
             {
-                GameManager.Instance.DayCount += 1;
-                GameManager.Instance.ClearEnemies();
-                GameManager.Instance.ClearMaps();
+                GameManager.Instance.DayCount++;
+                SoundManager.Instance.LobbyPlayMusic();         
                 return;
             }
         }

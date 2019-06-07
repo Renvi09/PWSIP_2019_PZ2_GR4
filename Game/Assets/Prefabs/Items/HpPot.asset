@@ -16,5 +16,5 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 1ae8b6a0c6b191b4990360b2f98a45c4, type: 3}
   stackSize: 5
   quality: 1
-  price: 5
+  price: 50
   heal: 20

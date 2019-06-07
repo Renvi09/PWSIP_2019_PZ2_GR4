@@ -381,7 +381,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   dmg: 25
-  type: 
+  type: bat
   speed: 2
 --- !u!114 &501921932
 MonoBehaviour:

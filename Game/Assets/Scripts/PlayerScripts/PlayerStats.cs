@@ -243,7 +243,7 @@ public class PlayerStats : MonoBehaviour
 
             if (lifes > value)
             {
-                GameManager.Instance.ClearEnemies();
+                GameManager.Instance.DayCount++;
                 CurrentHealth = MaxHealth;
                 CameraFollow.Instance.SetLimits(new Vector3(-12.8f, -7.2f), new Vector3(12.8f, 7.2f));
                 Player.Instance.transform.position = new Vector3(0, 0, 0);

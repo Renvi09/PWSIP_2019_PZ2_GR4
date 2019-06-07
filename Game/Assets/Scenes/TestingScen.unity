@@ -3385,7 +3385,7 @@ MonoBehaviour:
   canvas: {fileID: 2303194}
   quests:
   - title: Health is important
-    reward: 500
+    reward: 250
     description: Get Health Potions
     collectObjectives:
     - amount: 5
@@ -3400,7 +3400,7 @@ MonoBehaviour:
     goldObjectives:
     - amount: 10000
       type: Gold
-  - title: Kill Ghots
+  - title: Ghots
     reward: 250
     description: Kill 5 Ghots.
     collectObjectives: []
@@ -4913,10 +4913,10 @@ RectTransform:
   m_Father: {fileID: 1776661283}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 120, y: 0}
+  m_SizeDelta: {x: 200, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &534037411
 MonoBehaviour:
@@ -7414,6 +7414,154 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 878053371}
   m_CullTransparentMesh: 0
+--- !u!1 &887408851
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 887408853}
+  - component: {fileID: 887408852}
+  - component: {fileID: 887408854}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: SoundManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &887408852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887408851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a29b44e6ae839f449cfc1f437c601bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicLobby:
+  - {fileID: 8300000, guid: ed192dbafda3e2142ae2e2ffa477ef55, type: 3}
+  - {fileID: 8300000, guid: 696e9795bab850547b5a69db3ac6e5ea, type: 3}
+  - {fileID: 8300000, guid: b97248a0fa8bdc646a11c17401d1cab6, type: 3}
+  musicDungeon:
+  - {fileID: 8300000, guid: 7fd1fe1347766004cb6e1a3deaae83d7, type: 3}
+  - {fileID: 8300000, guid: 311ae5227d2c1e24d82c470957ab8ddb, type: 3}
+  - {fileID: 8300000, guid: 59cf8f457457afa44bdd1c5a49c6eb8b, type: 3}
+--- !u!4 &887408853
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887408851}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &887408854
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887408851}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &890475432
 GameObject:
   m_ObjectHideFlags: 0
@@ -15633,17 +15781,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - item: {fileID: 11400000, guid: d4734e2b9fae2554d9d75570020feb24, type: 2}
-    quant: 0
-    unlimited: 1
+    quant: 1
+    unlimited: 0
   - item: {fileID: 11400000, guid: 3093f26409f5522489af7fdac085ff8a, type: 2}
-    quant: 0
-    unlimited: 1
+    quant: 1
+    unlimited: 0
   - item: {fileID: 11400000, guid: e09b0432734e4d64e8c15f7586533084, type: 2}
-    quant: 0
-    unlimited: 1
+    quant: 1
+    unlimited: 0
   - item: {fileID: 11400000, guid: 6ce8d723e7a2d994c849b06774a9a788, type: 2}
-    quant: 0
-    unlimited: 1
+    quant: 1
+    unlimited: 0
+  - item: {fileID: 11400000, guid: 9f50c3a516260d24796801025e8fba60, type: 2}
+    quant: 1
+    unlimited: 0
   shopWindow: {fileID: 254614227}
 --- !u!1 &1940214995
 GameObject:
@@ -15848,8 +15999,8 @@ MonoBehaviour:
     quant: 1
     unlimited: 0
   - item: {fileID: 11400000, guid: 1478f430c20726d4295b89226a0f0e2c, type: 2}
-    quant: 5
-    unlimited: 0
+    quant: 0
+    unlimited: 1
   shopWindow: {fileID: 254614227}
 --- !u!1 &1981682074
 GameObject:
@@ -16491,7 +16642,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2037885429}
   m_Direction: 2
   m_Value: 1
-  m_Size: 1
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -17137,9 +17288,79 @@ MonoBehaviour:
   lootBoxes:
   - {fileID: 6931427158761755351, guid: 2739fda013ef435439c7fd588c002b06, type: 3}
   questList:
-  - title: 'I am best '
+  - title: Pay with your life
+    reward: 1500
+    description: Collect 5 life items.
+    collectObjectives:
+    - amount: 5
+      type: Life
+    killObjectives: []
+    goldObjectives: []
+  - title: Kill 3 Bosses
+    reward: 500
+    description: Kill 3 Bosses
+    collectObjectives:
+    - amount: 5
+      type: Damage Upgrade
+    killObjectives:
+    - amount: 3
+      type: boss
+    goldObjectives: []
+  - title: Damage is important but...
+    reward: 500
+    description: Get 1 Damage Upgrade.
+    collectObjectives:
+    - amount: 1
+      type: Damage Upgrade
+    killObjectives: []
+    goldObjectives: []
+  - title: Kill 15 Bats
+    reward: 500
+    description: Kill 15 Bats
+    collectObjectives:
+    - amount: 5
+      type: Damage Upgrade
+    killObjectives:
+    - amount: 15
+      type: bat
+    goldObjectives: []
+  - title: I'am SPEED
+    reward: 500
+    description: Get 1 speed Upgrade.
+    collectObjectives:
+    - amount: 5
+      type: Movement Speed Upgrade
+    killObjectives: []
+    goldObjectives: []
+  - title: Ghosts
+    reward: 500
+    description: Kill 15 Ghosts
+    collectObjectives:
+    - amount: 5
+      type: Damage Upgrade
+    killObjectives:
+    - amount: 15
+      type: Ghost
+    goldObjectives: []
+  - title: MORE SPEED!
+    reward: 800
+    description: Get 1 atack speed upgrade.
+    collectObjectives:
+    - amount: 1
+      type: Atack Speed Upgrade
+    killObjectives: []
+    goldObjectives: []
+  - title: x2x3x4
     reward: 0
-    description: win game
+    description: xddddd
+    collectObjectives:
+    - amount: 5
+      type: Damage Upgrade
+    killObjectives: []
+    goldObjectives: []
+  - title: x2x3x4
+    reward: 0
+    description: xddddd
     collectObjectives:
     - amount: 5
       type: Damage Upgrade
@@ -17160,6 +17381,78 @@ MonoBehaviour:
     - amount: 5
       type: Damage Upgrade
     killObjectives: []
+    goldObjectives: []
+  - title: x2x3x4
+    reward: 0
+    description: xddddd
+    collectObjectives:
+    - amount: 5
+      type: Damage Upgrade
+    killObjectives: []
+    goldObjectives: []
+  - title: x2x3x4
+    reward: 0
+    description: xddddd
+    collectObjectives:
+    - amount: 5
+      type: Damage Upgrade
+    killObjectives: []
+    goldObjectives: []
+  - title: x2x3x4
+    reward: 0
+    description: xddddd
+    collectObjectives:
+    - amount: 5
+      type: Damage Upgrade
+    killObjectives: []
+    goldObjectives: []
+  - title: x2x3x4
+    reward: 0
+    description: xddddd
+    collectObjectives:
+    - amount: 5
+      type: Damage Upgrade
+    killObjectives: []
+    goldObjectives: []
+  - title: x2x3x4
+    reward: 0
+    description: xddddd
+    collectObjectives:
+    - amount: 5
+      type: Damage Upgrade
+    killObjectives: []
+    goldObjectives: []
+  - title: x2x3x4
+    reward: 0
+    description: xddddd
+    collectObjectives:
+    - amount: 5
+      type: Damage Upgrade
+    killObjectives: []
+    goldObjectives: []
+  - title: x2x3x4
+    reward: 0
+    description: xddddd
+    collectObjectives:
+    - amount: 5
+      type: Damage Upgrade
+    killObjectives: []
+    goldObjectives: []
+  - title: x2x3x4
+    reward: 0
+    description: xddddd
+    collectObjectives:
+    - amount: 5
+      type: Damage Upgrade
+    killObjectives: []
+    goldObjectives: []
+  - title: Invincible
+    reward: 10000
+    description: Kill The Invincible
+    collectObjectives: []
+    killObjectives:
+    - amount: 1
+      type: Invincible
     goldObjectives: []
   LevelListNormal:
   - {fileID: 1295444372629823666, guid: fe13777a079d2084393aa0e8c07c8811, type: 3}

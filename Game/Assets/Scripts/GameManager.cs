@@ -146,6 +146,8 @@ public class GameManager : MonoBehaviour
 
 
                         );
+                enemy.GetComponent<StatHealth>().maxValue = 10 + 10 * DayCount;
+                enemy.GetComponent<StatHealth>().CurrentValue = enemy.GetComponent<StatHealth>().maxValue;
                 enemyList.Add(enemy);
             }
         }

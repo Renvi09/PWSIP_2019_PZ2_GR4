@@ -24,7 +24,9 @@ public class LobbyTeleport : MonoBehaviour
         {
             if (GameManager.Instance.maps.Count == 0)
             {
+
                 GameManager.Instance.MakeDungeon();
+                SoundManager.Instance.DungeonPlayMusic();
             }
               
                 CameraFollow.Instance.SetLimits(mapStart + new Vector3(-12.8f, -7.2f), mapStart - new Vector3(-12.8f, -7.2f));
