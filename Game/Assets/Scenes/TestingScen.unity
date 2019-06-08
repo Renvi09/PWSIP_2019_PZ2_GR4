@@ -16641,7 +16641,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2037885430}
   m_HandleRect: {fileID: 2037885429}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -17300,15 +17300,13 @@ MonoBehaviour:
       type: Life
     killObjectives: []
     goldObjectives: []
-  - title: Kill 3 Bosses
+  - title: Bosses
     reward: 500
     description: Kill 3 Bosses
-    collectObjectives:
-    - amount: 5
-      type: Damage Upgrade
+    collectObjectives: []
     killObjectives:
     - amount: 3
-      type: boss
+      type: Boss
     goldObjectives: []
   - title: Damage is important but...
     reward: 500
@@ -17318,12 +17316,10 @@ MonoBehaviour:
       type: Damage Upgrade
     killObjectives: []
     goldObjectives: []
-  - title: Kill 15 Bats
+  - title: Bats
     reward: 500
     description: Kill 15 Bats
-    collectObjectives:
-    - amount: 5
-      type: Damage Upgrade
+    collectObjectives: []
     killObjectives:
     - amount: 15
       type: bat
@@ -17339,9 +17335,7 @@ MonoBehaviour:
   - title: Ghosts
     reward: 500
     description: Kill 15 Ghosts
-    collectObjectives:
-    - amount: 5
-      type: Damage Upgrade
+    collectObjectives: []
     killObjectives:
     - amount: 15
       type: Ghost
