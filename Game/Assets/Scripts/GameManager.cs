@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
+
 public delegate void KillConfirmed(EnemyScript enemy);
 public class GameManager : MonoBehaviour
 {
@@ -17,9 +19,13 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private List<GameObject> enemies;
     [SerializeField]
+    private List<GameObject> boss;
+    [SerializeField]
     private List<GameObject> loot;
     [SerializeField]
     private List<GameObject> lootBoxes;
+    [SerializeField]
+    private List<GameObject> lootBossBoxes;
     private int dayCount = 1;
     [SerializeField]
     private List<Quest> questList;
@@ -48,7 +54,10 @@ public class GameManager : MonoBehaviour
 
         set
         {
-        
+            if(value>14)
+            {
+                SceneManager.LoadScene("GameOver");
+            }
             DayUp();         
             dayCount = value;
         }
@@ -57,10 +66,6 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         MouseTarget();
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            DayCount++;
-        }
     }
     private void MouseTarget()
     {
@@ -88,6 +93,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         MakePointList();
+       
     }
 
     public void MakeDungeon()
@@ -146,12 +152,25 @@ public class GameManager : MonoBehaviour
 
 
                         );
-                enemy.GetComponent<StatHealth>().maxValue = 10 + 10 * DayCount;
+                enemy.GetComponent<StatHealth>().maxValue = 20 + 15 * DayCount;
                 enemy.GetComponent<StatHealth>().CurrentValue = enemy.GetComponent<StatHealth>().maxValue;
                 enemyList.Add(enemy);
             }
         }
     
+    }
+    public void SpawnBoss(Transform center)
+    {
+        GameObject enemy = Instantiate(
+                        boss[Random.Range(0, boss.Count)],
+                       center.position - new Vector3(-10,0),
+                       transform.rotation
+
+
+                        );
+        enemy.GetComponent<StatHealth>().maxValue = 200 + 150 * DayCount;
+        enemy.GetComponent<StatHealth>().CurrentValue = enemy.GetComponent<StatHealth>().maxValue;
+        enemyList.Add(enemy);
     }
     public  bool isEnemy()
    {
@@ -164,7 +183,12 @@ public class GameManager : MonoBehaviour
     }
     public void DropLoot(Transform center)
     {
-         var go = Instantiate(lootBoxes[Random.Range(0, lootBoxes.Count - 1)],center.position,transform.rotation);
+         var go = Instantiate(lootBoxes[Random.Range(0, lootBoxes.Count)],center.position,transform.rotation);
+        loot.Add(go);
+    }
+    public void DropBossLoot(Transform center)
+    {
+        var go = Instantiate(lootBossBoxes[Random.Range(0, lootBoxes.Count)], center.position, transform.rotation);
         loot.Add(go);
     }
     public void ClearEnemies()
@@ -215,7 +239,7 @@ public class GameManager : MonoBehaviour
 
         }
         ClearMaps();
-        ClearEnemies();
         ClearBoxes();
+        ClearEnemies();    
     }
 }

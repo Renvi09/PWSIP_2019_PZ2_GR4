@@ -4,23 +4,14 @@ using UnityEngine;
 
 public class AtackScript : MonoBehaviour
 {
-    public float damage = 5;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
+        {
+            collision.gameObject.GetComponent<StatHealth>().CurrentValue -= PlayerStats.Instance.Damage;
+        }
+        if (collision.gameObject.tag == "Boss" && !collision.gameObject.GetComponent<EnemyScript>().IsImmortal)
         {
             collision.gameObject.GetComponent<StatHealth>().CurrentValue -= PlayerStats.Instance.Damage;
         }

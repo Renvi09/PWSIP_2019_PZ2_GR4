@@ -4913,10 +4913,10 @@ RectTransform:
   m_Father: {fileID: 1776661283}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 120, y: 0}
-  m_SizeDelta: {x: 200, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &534037411
 MonoBehaviour:
@@ -11791,7 +11791,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0015775114, y: -0.011042565}
+  m_Offset: {x: 0.0042366907, y: -0.034974307}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -11802,7 +11802,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.19695392, y: 0.27898455}
+  m_Size: {x: 0.12781782, y: 0.23112106}
   m_EdgeRadius: 0
 --- !u!212 &1393066260
 SpriteRenderer:
@@ -11860,7 +11860,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1393066255}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.81, y: 0.37, z: 0}
+  m_LocalPosition: {x: -6.96, y: -1.82, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -16642,7 +16642,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2037885429}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.99999994
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -17284,9 +17284,13 @@ MonoBehaviour:
   - {fileID: 2538416676696370321, guid: 4e1cfd8ef99872946939e3fd82175465, type: 3}
   - {fileID: 5562779682534951334, guid: 8e3ee53f06d49d54f803f5cacebefe88, type: 3}
   - {fileID: 7847416938701795940, guid: c45c16ca1da69ae42aaf91fda01eb316, type: 3}
+  boss:
+  - {fileID: 927596169499062946, guid: 5061498154a7a534c87211469dcfde02, type: 3}
   loot: []
   lootBoxes:
   - {fileID: 6931427158761755351, guid: 2739fda013ef435439c7fd588c002b06, type: 3}
+  lootBossBoxes:
+  - {fileID: 3953433890481861155, guid: d817d05207d001247acede510b4824d6, type: 3}
   questList:
   - title: Pay with your life
     reward: 1500
@@ -17328,7 +17332,7 @@ MonoBehaviour:
     reward: 500
     description: Get 1 speed Upgrade.
     collectObjectives:
-    - amount: 5
+    - amount: 1
       type: Movement Speed Upgrade
     killObjectives: []
     goldObjectives: []
@@ -17350,13 +17354,13 @@ MonoBehaviour:
       type: Atack Speed Upgrade
     killObjectives: []
     goldObjectives: []
-  - title: x2x3x4
-    reward: 0
-    description: xddddd
-    collectObjectives:
-    - amount: 5
-      type: Damage Upgrade
-    killObjectives: []
+  - title: Jellyfish
+    reward: 500
+    description: Kill 15  jellyfish.
+    collectObjectives: []
+    killObjectives:
+    - amount: 15
+      type: jellyfish
     goldObjectives: []
   - title: x2x3x4
     reward: 0
@@ -17438,11 +17442,11 @@ MonoBehaviour:
       type: Damage Upgrade
     killObjectives: []
     goldObjectives: []
-  - title: x2x3x4
+  - title: 
     reward: 0
-    description: xddddd
+    description: 0
     collectObjectives:
-    - amount: 5
+    - amount: 1
       type: Damage Upgrade
     killObjectives: []
     goldObjectives: []

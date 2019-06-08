@@ -9,7 +9,8 @@ public class EnemyScript : MonoBehaviour
     public float dmg;
     [SerializeField]
     private string type;
-
+    [SerializeField]
+    private bool isImmortal = false;
     public string ThisType
     {
         get
@@ -17,5 +18,18 @@ public class EnemyScript : MonoBehaviour
             return type;
         }
 
+    }
+
+    public bool IsImmortal
+    {
+        get
+        {
+            return isImmortal;
+        }
+
+        set
+        {
+            isImmortal = value;
+        }
     }
 }

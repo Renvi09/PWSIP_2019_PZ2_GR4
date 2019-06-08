@@ -31,10 +31,18 @@ public class TeleportForward : MonoBehaviour
                 CameraFollow.Instance.SetLimits(forward + new Vector3(-25f, -14f), forward - new Vector3(-25f, -14f));
                 player.transform.position = forward - new Vector3(20, 0, 0);
                
-                    GameManager.Instance.ClearEnemies();
-                    GameManager.Instance.ClearMaps();
-                    return;
+                  
                 
+
+            }
+            else if (currentLevel == 7)
+            {
+                CameraFollow.Instance.SetLimits(forward + new Vector3(-12.8f, -7.2f), forward - new Vector3(-12.8f, -7.2f));
+                player.transform.position = forward - new Vector3(10, 0, 0);
+
+                GameManager.Instance.DayCount++;
+                return;
+
 
             }
             else

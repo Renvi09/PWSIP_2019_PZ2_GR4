@@ -363,7 +363,8 @@ MonoBehaviour:
   target: {fileID: 0}
   dmg: 8
   type: jellyfish
-  buttel: {fileID: 0}
+  isImmortal: 0
+  buttel: {fileID: 6052874591246801724, guid: e6b9073ffe07f8f4c86891f00ed2c04b, type: 3}
 --- !u!95 &7847416938701795935
 Animator:
   serializedVersion: 3

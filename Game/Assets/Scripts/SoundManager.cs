@@ -39,14 +39,14 @@ public class SoundManager : MonoBehaviour
     {
         if(!audioSource.isPlaying && GameManager.Instance.maps.Count==0)
         {
-            audioSource=AddAudio(musicLobby[Random.Range(0, musicLobby.Count-1)],false,false,0.5f);
+            audioSource=AddAudio(musicLobby[Random.Range(0, musicLobby.Count)],false,false,0.5f);
             audioSource.Play();
            
         }
 
         if (!audioSource.isPlaying && GameManager.Instance.maps.Count >0)
         {
-            audioSource = AddAudio(musicLobby[Random.Range(0, musicLobby.Count - 1)], false, false, 0.5f);
+            audioSource = AddAudio(musicDungeon[Random.Range(0, musicDungeon.Count)], false, false, 0.5f);
             audioSource.Play();
 
         }
@@ -54,7 +54,7 @@ public class SoundManager : MonoBehaviour
     public void DungeonPlayMusic()
     {
         audioSource.Stop();
-        audioSource = AddAudio(musicDungeon[Random.Range(0, musicLobby.Count - 1)], false, false, 0.5f);
+        audioSource = AddAudio(musicDungeon[Random.Range(0, musicLobby.Count)], false, false, 0.5f);
         audioSource.Play();
     }
     public void LobbyPlayMusic()

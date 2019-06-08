@@ -9,6 +9,7 @@ public class StatHealth : MonoBehaviour
     public float maxValue { get; set; }
     public GameObject HealthBar;
     private Image healthBarImage;
+
     private float currentValue;
     public float CurrentValue
     {
@@ -19,6 +20,8 @@ public class StatHealth : MonoBehaviour
 
         set
         {
+           
+
             if (value > maxValue)
             {
                 currentValue = maxValue;
@@ -44,21 +47,21 @@ public class StatHealth : MonoBehaviour
             }
             else
             {
-                
+
                 currentFill = currentValue / maxValue;
             }
           
+               
+            
+           
+       
+
         }
 
     }
 
 
     // Start is called before the first frame update
-    private void Awake()
-    {
-        maxValue = 50;
-        CurrentValue = 50;
-    }
     void Start()
     {
      

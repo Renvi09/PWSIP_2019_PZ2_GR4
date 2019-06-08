@@ -29,11 +29,12 @@ public class Range : EnemyScript
                 var rotation = Quaternion.FromToRotation(Vector3.up, pos - transform.position);
 
                 var bullet = (GameObject)Instantiate(
-                    PlayerStats.Instance.SpellList[1],
+                  buttel,
                   transform.position,
                     rotation);
                 bullet.transform.position = this.transform.position;
                 bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.up * 5;
+                bullet.GetComponent<EnemyAtack>().damage = 5 * dmg;
                 Destroy(bullet, 2.0f);
             }
         }
@@ -50,5 +51,6 @@ public class Range : EnemyScript
             
             PlayerStats.Instance.CurrentHealth -= dmg * 2;
         }
+     
     }
 }

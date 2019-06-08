@@ -11,6 +11,8 @@ TagManager:
   - Map
   - NPC
   - SoundManager
+  - PlayerAtack
+  - Boss
   layers:
   - Default
   - TransparentFX
