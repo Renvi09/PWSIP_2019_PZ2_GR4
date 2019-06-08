@@ -17300,7 +17300,7 @@ MonoBehaviour:
       type: Life
     killObjectives: []
     goldObjectives: []
-  - title: Bosses
+  - title: Boss
     reward: 500
     description: Kill 3 Bosses
     collectObjectives: []
