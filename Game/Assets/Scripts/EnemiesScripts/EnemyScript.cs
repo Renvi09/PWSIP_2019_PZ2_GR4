@@ -8,6 +8,8 @@ public class EnemyScript : MonoBehaviour
     [SerializeField]
     public float dmg;
     [SerializeField]
+    public int gold;
+    [SerializeField]
     private string type;
     [SerializeField]
     private bool isImmortal = false;

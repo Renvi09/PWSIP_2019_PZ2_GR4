@@ -4913,10 +4913,10 @@ RectTransform:
   m_Father: {fileID: 1776661283}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 120, y: 0.000030517578}
+  m_SizeDelta: {x: 200, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &534037411
 MonoBehaviour:
@@ -7452,6 +7452,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7fd1fe1347766004cb6e1a3deaae83d7, type: 3}
   - {fileID: 8300000, guid: 311ae5227d2c1e24d82c470957ab8ddb, type: 3}
   - {fileID: 8300000, guid: 59cf8f457457afa44bdd1c5a49c6eb8b, type: 3}
+  musicBoss:
+  - {fileID: 8300000, guid: 81603aadc2f0a6a49a54861577cfaa31, type: 3}
+  - {fileID: 8300000, guid: 57d9d388c1d8ef643bb0e290be9057ac, type: 3}
+  - {fileID: 8300000, guid: cf306f3b1c54d494d92da4534fdc04c7, type: 3}
 --- !u!4 &887408853
 Transform:
   m_ObjectHideFlags: 0
@@ -15792,6 +15796,9 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: 6ce8d723e7a2d994c849b06774a9a788, type: 2}
     quant: 1
     unlimited: 0
+  - item: {fileID: 11400000, guid: 5c559884c6e30774ca4b4bee4012c0f9, type: 2}
+    quant: 0
+    unlimited: 1
   shopWindow: {fileID: 254614227}
 --- !u!1 &1940214995
 GameObject:

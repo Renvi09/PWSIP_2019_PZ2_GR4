@@ -152,6 +152,7 @@ public class GameManager : MonoBehaviour
 
 
                         );
+                enemy.GetComponent<EnemyScript>().gold = 5 + 5 * dayCount;
                 enemy.GetComponent<StatHealth>().maxValue = 20 + 15 * DayCount;
                 enemy.GetComponent<StatHealth>().CurrentValue = enemy.GetComponent<StatHealth>().maxValue;
                 enemyList.Add(enemy);
@@ -163,11 +164,12 @@ public class GameManager : MonoBehaviour
     {
         GameObject enemy = Instantiate(
                         boss[Random.Range(0, boss.Count)],
-                       center.position - new Vector3(-10,0),
+                       center.position+new Vector3(0,3),
                        transform.rotation
 
 
                         );
+        enemy.GetComponent<EnemyScript>().gold = 200 + 100 * dayCount;
         enemy.GetComponent<StatHealth>().maxValue = 200 + 150 * DayCount;
         enemy.GetComponent<StatHealth>().CurrentValue = enemy.GetComponent<StatHealth>().maxValue;
         enemyList.Add(enemy);
@@ -236,6 +238,7 @@ public class GameManager : MonoBehaviour
             questList.Remove(questList[0]);
 
         }
+        SoundManager.Instance.LobbyPlayMusic();
         ClearMaps();
         ClearBoxes();
         ClearEnemies();    

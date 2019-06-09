@@ -7,7 +7,11 @@ public class MageBossScript : EnemyScript
     // Start is called before the first frame update
     [SerializeField]
     private GameObject[] spells;
+    bool spawned=false;
     float timer;
+    float enrageTimer;
+    float spawnTimer=15f;
+    float atackSpeed = 4f;
     private int stage=1;
     float timerStage;
     public int Stage
@@ -25,32 +29,44 @@ public class MageBossScript : EnemyScript
 
     void Start()
     {
-
+        Debug.Log(spawned);
         target = Player.Instance.transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GetComponent<StatHealth>().CurrentValue< GetComponent<StatHealth>().maxValue/2)
+        enrageTimer += Time.deltaTime;
+        if(enrageTimer>120)
         {
+            atackSpeed = 0.4f;
+        }
+        if(stage >1 && stage < 3 && GetComponent<StatHealth>().CurrentValue < GetComponent<StatHealth>().maxValue / 5)
+        {
+            stage = 3;
+
+        }
+        if (stage <2 &&  GetComponent<StatHealth>().CurrentValue< GetComponent<StatHealth>().maxValue/2)
+        {
+           
            stage = 2;
+           timerStage = 15f;
         }
 
         timer += Time.deltaTime;
-        if(stage==2)
+        if(stage>1)
         {
             timerStage += Time.deltaTime;
         }
     
-        if (Stage >0 && timer > 4f)
+        if (Stage >0 && timer > atackSpeed)
         {
             timer = 0f;
             var pos = Player.Instance.transform.position;
             var rotation = Quaternion.FromToRotation(Vector3.up, pos - transform.position);
            
             var bullet = (GameObject)Instantiate(
-              spells[Random.Range(0,spells.Length-1)],
+              spells[0],
               transform.position,
                 rotation);
             bullet.transform.position = this.transform.position;
@@ -60,10 +76,57 @@ public class MageBossScript : EnemyScript
 
             Destroy(bullet, 2.0f);
         }
-        if(Stage == 2 && timerStage>15)
+        if(stage > 1 && timerStage>spawnTimer &&!spawned)
         {
             timerStage = 0f;
             GameManager.Instance.RespawnEnemy(this.transform);
+        }
+        if(stage==3 && !spawned)
+        {
+            spawned = true;
+            var clone = (GameObject)Instantiate(
+            this.gameObject,
+            transform.position + new Vector3(-5,0),
+            transform.rotation);
+            clone.GetComponent<MageBossScript>().spawned = true;
+            clone.GetComponent<StatHealth>().maxValue = GetComponent<StatHealth>().maxValue;
+            clone.GetComponent<StatHealth>().CurrentValue = GetComponent<StatHealth>().CurrentValue;
+            GameManager.Instance.enemyList.Add(clone);
+           
+            var clone2 = (GameObject)Instantiate(
+            this.gameObject,
+            transform.position + new Vector3(5,0),
+            transform.rotation);
+
+            clone2.GetComponent<MageBossScript>().spawned = true;
+            clone2.GetComponent<StatHealth>().maxValue = GetComponent<StatHealth>().maxValue;
+            clone2.GetComponent<StatHealth>().CurrentValue = GetComponent<StatHealth>().CurrentValue;
+
+            GameManager.Instance.enemyList.Add(clone2);
+         
+            var clone3 = (GameObject)Instantiate(
+            this.gameObject,
+            transform.position + new Vector3(0,5),
+            transform.rotation);
+
+            clone3.GetComponent<MageBossScript>().spawned = true;
+            clone3.GetComponent<StatHealth>().maxValue = GetComponent<StatHealth>().maxValue;
+            clone3.GetComponent<StatHealth>().CurrentValue = GetComponent<StatHealth>().CurrentValue;
+
+            GameManager.Instance.enemyList.Add(clone3);
+        
+            var clone4 = (GameObject)Instantiate(
+            this.gameObject,
+            transform.position + new Vector3(0,-5),
+            transform.rotation);
+
+            clone4.GetComponent<MageBossScript>().spawned = true;
+            clone4.GetComponent<StatHealth>().maxValue = GetComponent<StatHealth>().maxValue;
+            clone4.GetComponent<StatHealth>().CurrentValue = GetComponent<StatHealth>().CurrentValue;
+
+            GameManager.Instance.enemyList.Add(clone4);
+
+
         }
     }
 }

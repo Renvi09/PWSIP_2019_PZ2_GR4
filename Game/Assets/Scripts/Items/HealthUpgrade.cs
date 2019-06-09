@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu(fileName = "HealthUpgrade", menuName = "Items/HpUpgrade", order = 3)]
-public class HealthUpgrade : Item,IUse
+public class HealthUpgrade : Item,IUse, IDescribable
 {
     [SerializeField]
     private float health;

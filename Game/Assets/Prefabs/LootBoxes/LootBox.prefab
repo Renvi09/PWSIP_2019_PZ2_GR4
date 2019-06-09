@@ -136,7 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootItems:
   - item: {fileID: 11400000, guid: d116be6f7149cc74087d3a3791b69989, type: 2}
-    dropChance: 50
+    dropChance: 5
   - item: {fileID: 11400000, guid: 1478f430c20726d4295b89226a0f0e2c, type: 2}
     dropChance: 40
   - item: {fileID: 11400000, guid: 1478f430c20726d4295b89226a0f0e2c, type: 2}
@@ -146,7 +146,7 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: 1478f430c20726d4295b89226a0f0e2c, type: 2}
     dropChance: 10
   - item: {fileID: 11400000, guid: 3baab1b87cf1ce743adf274c713613ba, type: 2}
-    dropChance: 100
+    dropChance: 5
 --- !u!61 &6931427158761755373
 BoxCollider2D:
   m_ObjectHideFlags: 0

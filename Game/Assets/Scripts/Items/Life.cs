@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Life", menuName = "Items/Life", order = 7)]
-public class Life : Item, IUse
+public class Life : Item, IUse,IDescribable
 {
 
     [SerializeField]

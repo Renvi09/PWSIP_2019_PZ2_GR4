@@ -8,6 +8,8 @@ public class SoundManager : MonoBehaviour
     private List<AudioClip> musicLobby;
     [SerializeField]
     private List<AudioClip> musicDungeon;
+    [SerializeField]
+    private List<AudioClip> musicBoss;
     AudioSource audioSource;
     private static SoundManager instance;
     public static SoundManager Instance
@@ -31,7 +33,7 @@ public class SoundManager : MonoBehaviour
     }
     private void Start()
     {
-        audioSource = AddAudio(musicLobby[Random.Range(0, musicLobby.Count-1)], false, false, 0.5f);
+        audioSource = AddAudio(musicLobby[Random.Range(0, musicLobby.Count)], false, false, 0.5f);
         audioSource.Play();
 
     }
@@ -60,7 +62,13 @@ public class SoundManager : MonoBehaviour
     public void LobbyPlayMusic()
     {
         audioSource.Stop();
-        audioSource = AddAudio(musicLobby[Random.Range(0, musicLobby.Count - 1)], false, false, 0.5f);
+        audioSource = AddAudio(musicLobby[Random.Range(0, musicLobby.Count)], false, false, 0.5f);
+        audioSource.Play();
+    }
+    public void BossPlayMusic()
+    {
+        audioSource.Stop();
+        audioSource = AddAudio(musicBoss[Random.Range(0, musicBoss.Count)], false, false, 0.5f);
         audioSource.Play();
     }
     //Funkcja pozwalajaca na tworzenie nowych zrodel audio

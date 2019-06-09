@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu(fileName = "DamageUpgrade", menuName = "Items/DmgUpgrade", order = 5)]
-public class DamageUpgrade :Item,IUse
+public class DamageUpgrade :Item,IUse, IDescribable
 {
 
     [SerializeField]

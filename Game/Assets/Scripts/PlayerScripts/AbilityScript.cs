@@ -4,15 +4,32 @@ using UnityEngine;
 
 public class AbilityScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private float damage;
+
+    public float Damage
     {
-        
+        get
+        {
+            return damage;
+        }
+
+        set
+        {
+            damage = value;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    // Start is called before the first frame update
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (collision.gameObject.tag == "Enemy")
+        {
+            collision.gameObject.GetComponent<StatHealth>().CurrentValue -= Damage;
+        }
+        if (collision.gameObject.tag == "Boss" && !collision.gameObject.GetComponent<EnemyScript>().IsImmortal)
+        {
+            collision.gameObject.GetComponent<StatHealth>().CurrentValue -= Damage;
+        }
     }
 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "HpPot", menuName = "Items/HpPot", order = 2)]
-public class HpPot : Item,IUse
+public class HpPot : Item,IUse, IDescribable
 {
     [SerializeField]
     private float heal;

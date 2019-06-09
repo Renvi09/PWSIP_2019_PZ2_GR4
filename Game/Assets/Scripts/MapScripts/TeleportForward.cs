@@ -30,6 +30,7 @@ public class TeleportForward : MonoBehaviour
             {
                 CameraFollow.Instance.SetLimits(forward + new Vector3(-25f, -14f), forward - new Vector3(-25f, -14f));
                 player.transform.position = forward - new Vector3(20, 0, 0);
+                SoundManager.Instance.BossPlayMusic();
                
                   
                 

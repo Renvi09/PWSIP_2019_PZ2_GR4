@@ -28,6 +28,7 @@ public class Mele : EnemyScript
                 timer2 += Time.deltaTime;
                 if(timer2>5f)
                 {
+                    timer2 = 0f;
                     timer = 0f;
                 }
                 transform.position = Vector2.MoveTowards(transform.position, target.position, speed* 4 * Time.deltaTime);

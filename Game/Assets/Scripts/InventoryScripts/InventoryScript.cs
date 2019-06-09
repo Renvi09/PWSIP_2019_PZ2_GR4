@@ -82,27 +82,7 @@ public class InventoryScript : MonoBehaviour
       
 
     }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            Bag bag = (Bag)Instantiate(items[0]);
-            bag.Slots = 16;
-            bag.Use();
-        }
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            Bag bag = (Bag)Instantiate(items[0]);
-            bag.Slots = 16;
-            AddItem(bag);
-        }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            HpPot pot = (HpPot)Instantiate(items[1]);
-          
-            AddItem(pot);
-        }
-    }
+  
     //dodaje bag do listy bagow 
     public void AddBag(Bag bag)
     {

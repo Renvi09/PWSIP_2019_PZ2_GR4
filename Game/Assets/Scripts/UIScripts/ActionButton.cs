@@ -74,6 +74,11 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IClicable,IPoin
     {
         if (HandScript.Instance.ThisMove == null)
         {
+            if (ThisIUse != null && ThisUseables.Count == 0)
+            {
+                ThisIUse = null;
+                return;
+            }
             if (ThisIUse != null)
             {
                 ThisIUse.Use();
@@ -82,6 +87,8 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IClicable,IPoin
             {
                 ThisUseables.Peek().Use();
             }
+          
+            
         }
        
     }
@@ -105,6 +112,7 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IClicable,IPoin
             count = ThisUseables.Count;
             InventoryScript.Instance.FromSlot.ThisIcon.color = Color.white;
             InventoryScript.Instance.FromSlot = null;
+            this.ThisIUse = useable;
 
         }
         else
@@ -140,7 +148,7 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IClicable,IPoin
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-     if(ThisIUse!=null )
+        if(ThisIUse!=null )
         {
             UIManager.Instance.ShowTooltip(transform.position,(IDescribable)ThisIUse);
         }

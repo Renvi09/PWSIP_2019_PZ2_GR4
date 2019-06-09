@@ -69,11 +69,11 @@ public class Player : MonoBehaviour
         playerRigidbody2D = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
         playerStats = GetComponent<PlayerStats>();
-        playerStats.MovementSpeed = 5;
+        playerStats.MovementSpeed = 3;
         playerStats.CurrentHealth =100;
         playerStats.Gold = 9990;
-        TimeBetweenBullets = 0.1f;
-        playerStats.Damage = 20;
+        TimeBetweenBullets = 1f;
+        playerStats.Damage = 10f;
         playerStats.Lifes = 1;
     }
 

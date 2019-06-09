@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "AtackSpeedUpgrade", menuName = "Items/AsUpgrade", order = 6)]
- public class AtackSpeedUpgrade : Item, IUse
+ public class AtackSpeedUpgrade : Item, IUse, IDescribable
 {
 
         [SerializeField]

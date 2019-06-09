@@ -29,7 +29,7 @@ public class StatHealth : MonoBehaviour
             else if (value <1)
             {
                 currentValue = 0;
-                PlayerStats.Instance.Gold += 50;
+                PlayerStats.Instance.Gold += Random.Range(0,GetComponent<EnemyScript>().gold);
                 GameManager.Instance.enemyList.Remove(this.gameObject);
                 GameManager.Instance.OnKillConfirmed(GetComponent<EnemyScript>());
                 Destroy(this.gameObject);

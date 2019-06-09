@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu(fileName = "ThanosSnap", menuName = "Items/ThanosSnap", order = 8)]
-public class ThanosSnap : Item,IUse
+public class ThanosSnap : Item,IUse, IDescribable
 { 
   
 

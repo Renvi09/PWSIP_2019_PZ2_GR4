@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "MovementSpeedUpgrade", menuName = "Items/MsUpgrade", order = 4)]
-public class MovementSpeedUpgrade : Item,IUse
+public class MovementSpeedUpgrade : Item,IUse, IDescribable
 {
     [SerializeField]
     private float movementSpeed;
