@@ -4392,7 +4392,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1886641171}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.99999964
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -15792,9 +15792,6 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: 6ce8d723e7a2d994c849b06774a9a788, type: 2}
     quant: 1
     unlimited: 0
-  - item: {fileID: 11400000, guid: 9f50c3a516260d24796801025e8fba60, type: 2}
-    quant: 1
-    unlimited: 0
   shopWindow: {fileID: 254614227}
 --- !u!1 &1940214995
 GameObject:
@@ -17356,93 +17353,13 @@ MonoBehaviour:
     - amount: 15
       type: jellyfish
     goldObjectives: []
-  - title: x2x3x4
-    reward: 0
-    description: xddddd
-    collectObjectives:
-    - amount: 5
-      type: Damage Upgrade
-    killObjectives: []
-    goldObjectives: []
-  - title: x2x3x4
-    reward: 0
-    description: xddddd
-    collectObjectives:
-    - amount: 5
-      type: Damage Upgrade
-    killObjectives: []
-    goldObjectives: []
-  - title: x2x3x4
-    reward: 0
-    description: xddddd
-    collectObjectives:
-    - amount: 5
-      type: Damage Upgrade
-    killObjectives: []
-    goldObjectives: []
-  - title: x2x3x4
-    reward: 0
-    description: xddddd
-    collectObjectives:
-    - amount: 5
-      type: Damage Upgrade
-    killObjectives: []
-    goldObjectives: []
-  - title: x2x3x4
-    reward: 0
-    description: xddddd
-    collectObjectives:
-    - amount: 5
-      type: Damage Upgrade
-    killObjectives: []
-    goldObjectives: []
-  - title: x2x3x4
-    reward: 0
-    description: xddddd
-    collectObjectives:
-    - amount: 5
-      type: Damage Upgrade
-    killObjectives: []
-    goldObjectives: []
-  - title: x2x3x4
-    reward: 0
-    description: xddddd
-    collectObjectives:
-    - amount: 5
-      type: Damage Upgrade
-    killObjectives: []
-    goldObjectives: []
-  - title: x2x3x4
-    reward: 0
-    description: xddddd
-    collectObjectives:
-    - amount: 5
-      type: Damage Upgrade
-    killObjectives: []
-    goldObjectives: []
-  - title: x2x3x4
-    reward: 0
-    description: xddddd
-    collectObjectives:
-    - amount: 5
-      type: Damage Upgrade
-    killObjectives: []
-    goldObjectives: []
-  - title: x2x3x4
-    reward: 0
-    description: xddddd
-    collectObjectives:
-    - amount: 5
-      type: Damage Upgrade
-    killObjectives: []
-    goldObjectives: []
   - title: 
-    reward: 0
-    description: 0
-    collectObjectives:
+    reward: 10000
+    description: Kill The Invincible
+    collectObjectives: []
+    killObjectives:
     - amount: 1
-      type: Damage Upgrade
-    killObjectives: []
+      type: Invincible
     goldObjectives: []
   - title: Invincible
     reward: 10000

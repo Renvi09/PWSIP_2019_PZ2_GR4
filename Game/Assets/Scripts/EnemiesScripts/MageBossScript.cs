@@ -48,7 +48,7 @@ public class MageBossScript : EnemyScript
             timer = 0f;
             var pos = Player.Instance.transform.position;
             var rotation = Quaternion.FromToRotation(Vector3.up, pos - transform.position);
-
+           
             var bullet = (GameObject)Instantiate(
               spells[Random.Range(0,spells.Length-1)],
               transform.position,
