@@ -23,7 +23,7 @@ public class SunStrike : Item,IUse, IDescribable
                 sunStrike,
               pos,
               rotation);
-            bullet.GetComponent<AbilityScript>().Damage = damage;
+            bullet.GetComponent<AbilityScript>().Damage = damage/2;
             bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.up * 8;
             Destroy(bullet, 4.0f);
         }
@@ -32,6 +32,6 @@ public class SunStrike : Item,IUse, IDescribable
     public override string GetDescription()
     {
 
-        return base.GetDescription() + string.Format("\n Damage + {0}", damage);
+        return base.GetDescription() + string.Format("\n Your enemies will burn!\n Deals {0}", damage);
     }
 }
