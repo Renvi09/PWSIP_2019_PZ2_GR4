@@ -231,11 +231,9 @@ public class GameManager : MonoBehaviour
     }
     public void DayUp()
     {
-        if (questList.Count > 1)
+        if (questList.Count >= 1)
         {
             questGiver.Quests.Add(questList[0]);
-            questGiver.Quests.Add(questList[1]);
-            questList.Remove(questList[1]);
             questList.Remove(questList[0]);
 
         }
