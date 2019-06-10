@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 {
     public List<GameObject> maps = new List<GameObject>();
     public event KillConfirmed KillConfirmedEvent;
-    private static GameManager instance;
+
     [SerializeField]
     private Shop upgrades;
     [SerializeField]
@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     private int dayCount = 1;
     [SerializeField]
     private List<Quest> questList;
+    private static GameManager instance;
     public static GameManager Instance
     {
         get
@@ -57,9 +58,9 @@ public class GameManager : MonoBehaviour
             if(value>14)
             {
                 SceneManager.LoadScene("GameOver");
-            }
-            DayUp();         
+            }         
             dayCount = value;
+            DayUp();
         }
     }
 
@@ -238,6 +239,7 @@ public class GameManager : MonoBehaviour
             questList.Remove(questList[0]);
 
         }
+        DayUpdateScript.Instance.UpdateDay(DayCount);
         SoundManager.Instance.LobbyPlayMusic();
         ClearMaps();
         ClearBoxes();
