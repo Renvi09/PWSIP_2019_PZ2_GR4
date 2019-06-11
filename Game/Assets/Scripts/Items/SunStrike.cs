@@ -23,7 +23,7 @@ public class SunStrike : Item,IUse, IDescribable
                 sunStrike,
               pos,
               rotation);
-            bullet.GetComponent<AbilityScript>().Damage = damage/2;
+            bullet.GetComponent<AbilityScript>().Damage = damage;
             bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.up * 8;
             Destroy(bullet, 4.0f);
         }

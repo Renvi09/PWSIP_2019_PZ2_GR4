@@ -79,11 +79,7 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler, IClicable,IPoin
                 ThisIUse = null;
                 return;
             }
-            if (ThisIUse != null)
-            {
-                ThisIUse.Use();
-            }
-            if(ThisUseables != null && ThisUseables.Count >0)
+            else if(ThisUseables != null && ThisUseables.Count >0)
             {
                 ThisUseables.Peek().Use();
             }

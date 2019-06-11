@@ -82,6 +82,10 @@ public class Player : MonoBehaviour
     {
         timer += Time.deltaTime;
         AnimationLayerControl();
+        if(Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            playerStats.Gold = 0;
+        }
     }
 
     private void FixedUpdate()
