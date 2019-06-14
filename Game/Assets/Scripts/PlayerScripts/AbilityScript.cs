@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AbilityScript : MonoBehaviour
 {
+    [SerializeField]
     private float damage;
 
     public float Damage
@@ -19,7 +20,6 @@ public class AbilityScript : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

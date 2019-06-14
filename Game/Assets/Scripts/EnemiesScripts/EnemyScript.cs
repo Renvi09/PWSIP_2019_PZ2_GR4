@@ -13,6 +13,8 @@ public class EnemyScript : MonoBehaviour
     private string type;
     [SerializeField]
     private bool isImmortal = false;
+    [SerializeField]
+    private float speed;
     public string ThisType
     {
         get
@@ -32,6 +34,19 @@ public class EnemyScript : MonoBehaviour
         set
         {
             isImmortal = value;
+        }
+    }
+
+    public float Speed
+    {
+        get
+        {
+            return speed;
+        }
+
+        set
+        {
+            speed = value;
         }
     }
 }

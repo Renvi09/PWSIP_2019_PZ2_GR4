@@ -6,8 +6,7 @@ public class Mele : EnemyScript
 {
     private float timer = 0;
     private float timer2 = 0;
-    [SerializeField]
-    private float speed;
+
     void Start()
     {
         target = Player.Instance.transform;
@@ -21,7 +20,7 @@ public class Mele : EnemyScript
         timer += Time.deltaTime;
         if (Vector2.Distance(transform.position, target.position)>1)
         {
-            transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, target.position, Speed * Time.deltaTime);
 
             if (timer > 15f)
             {
@@ -31,7 +30,7 @@ public class Mele : EnemyScript
                     timer2 = 0f;
                     timer = 0f;
                 }
-                transform.position = Vector2.MoveTowards(transform.position, target.position, speed* 4 * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, target.position, Speed* 4 * Time.deltaTime);
 
             }
         }

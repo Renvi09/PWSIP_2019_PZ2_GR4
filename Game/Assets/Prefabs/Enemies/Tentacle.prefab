@@ -362,8 +362,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   dmg: 8
+  gold: 0
   type: jellyfish
   isImmortal: 0
+  speed: 3
   buttel: {fileID: 6052874591246801724, guid: e6b9073ffe07f8f4c86891f00ed2c04b, type: 3}
 --- !u!95 &7847416938701795935
 Animator:

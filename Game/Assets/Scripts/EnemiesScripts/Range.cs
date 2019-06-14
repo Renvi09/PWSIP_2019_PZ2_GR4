@@ -5,7 +5,7 @@ using UnityEngine;
 public class Range : EnemyScript
 {
     private float timer = 0;
-    private float timeBetweenBullets = 0.5f;
+    private float timeBetweenBullets = 1f;
     [SerializeField]
     private GameObject buttel;
     // Start is called before the first frame update
@@ -40,7 +40,7 @@ public class Range : EnemyScript
         }
         else
         {
-            transform.position = Vector2.MoveTowards(transform.position, target.position, 3 * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, target.position, Speed * Time.deltaTime);
         }
 
     }

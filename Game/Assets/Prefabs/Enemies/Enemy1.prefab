@@ -345,6 +345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthBar: {fileID: 1070453358}
+  currentValue: 0
 --- !u!61 &7878499608498846803
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -384,6 +385,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
+  howManny: 1
+  wawe: 0
 --- !u!114 &513439811648131601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,4 +401,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   dmg: 10
+  gold: 0
   type: 
+  isImmortal: 0
+  speed: 0
+  buttel: {fileID: 2341824775892826484, guid: 58423c176e757f04c9acec31a8007137, type: 3}

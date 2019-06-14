@@ -9,7 +9,7 @@ public class StatHealth : MonoBehaviour
     public float maxValue { get; set; }
     public GameObject HealthBar;
     private Image healthBarImage;
-
+    [SerializeField]
     private float currentValue;
     public float CurrentValue
     {
@@ -66,6 +66,8 @@ public class StatHealth : MonoBehaviour
     {
      
         healthBarImage = HealthBar.GetComponent<Image>();
+        maxValue = currentValue;
+        CurrentValue = currentValue;
 
     }
 

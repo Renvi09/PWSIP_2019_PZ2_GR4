@@ -32,6 +32,6 @@ public class SunStrike : Item,IUse, IDescribable
     public override string GetDescription()
     {
 
-        return base.GetDescription() + string.Format("\n Your enemies will burn!\n Deals {0}", damage);
+        return base.GetDescription() + string.Format("\n Your enemies will burn!\n Deals {0} damage.", damage);
     }
 }
