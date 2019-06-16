@@ -16,6 +16,6 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 6c5891336b1ff61448606f7b555ba41f, type: 3}
   stackSize: 0
   quality: 3
-  price: 500
+  price: 50
   damage: 1
   hammer: {fileID: 4470470757782818688, guid: 0c98f5fc1ea2246448934d7e9da63d1a, type: 3}

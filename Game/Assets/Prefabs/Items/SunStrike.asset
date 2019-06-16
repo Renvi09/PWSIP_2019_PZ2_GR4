@@ -17,6 +17,6 @@ MonoBehaviour:
   stackSize: 0
   quality: 3
   price: 200
-  damage: 20
+  damage: 5
   sunStrike: {fileID: 3096341292218216913, guid: 663a8a3d58b7df34ab34b8f85c228077,
     type: 3}
