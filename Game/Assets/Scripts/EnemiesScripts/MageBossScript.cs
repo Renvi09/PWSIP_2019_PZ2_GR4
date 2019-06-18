@@ -83,14 +83,16 @@ public class MageBossScript : EnemyScript
         }
         if(stage==3 && !spawned)
         {
+            float hpValue =this.gameObject.GetComponent<StatHealth>().CurrentValue;
+            float hpMaxValue = this.gameObject.GetComponent<StatHealth>().maxValue;
             spawned = true;
             var clone = (GameObject)Instantiate(
             this.gameObject,
             transform.position + new Vector3(-5,0),
             transform.rotation);
             clone.GetComponent<MageBossScript>().spawned = true;
-            clone.GetComponent<StatHealth>().maxValue = GetComponent<StatHealth>().maxValue;
-            clone.GetComponent<StatHealth>().CurrentValue = GetComponent<StatHealth>().CurrentValue;
+            clone.GetComponent<StatHealth>().maxValue = hpMaxValue;
+            clone.GetComponent<StatHealth>().CurrentValue = hpValue;
             GameManager.Instance.enemyList.Add(clone);
            
             var clone2 = (GameObject)Instantiate(
@@ -99,8 +101,8 @@ public class MageBossScript : EnemyScript
             transform.rotation);
 
             clone2.GetComponent<MageBossScript>().spawned = true;
-            clone2.GetComponent<StatHealth>().maxValue = GetComponent<StatHealth>().maxValue;
-            clone2.GetComponent<StatHealth>().CurrentValue = GetComponent<StatHealth>().CurrentValue;
+            clone2.GetComponent<StatHealth>().maxValue = hpMaxValue;
+            clone2.GetComponent<StatHealth>().CurrentValue = hpValue;
 
             GameManager.Instance.enemyList.Add(clone2);
          
@@ -110,8 +112,8 @@ public class MageBossScript : EnemyScript
             transform.rotation);
 
             clone3.GetComponent<MageBossScript>().spawned = true;
-            clone3.GetComponent<StatHealth>().maxValue = GetComponent<StatHealth>().maxValue;
-            clone3.GetComponent<StatHealth>().CurrentValue = GetComponent<StatHealth>().CurrentValue;
+            clone3.GetComponent<StatHealth>().maxValue = hpMaxValue;
+            clone3.GetComponent<StatHealth>().CurrentValue = hpValue;
 
             GameManager.Instance.enemyList.Add(clone3);
         
@@ -121,8 +123,8 @@ public class MageBossScript : EnemyScript
             transform.rotation);
 
             clone4.GetComponent<MageBossScript>().spawned = true;
-            clone4.GetComponent<StatHealth>().maxValue = GetComponent<StatHealth>().maxValue;
-            clone4.GetComponent<StatHealth>().CurrentValue = GetComponent<StatHealth>().CurrentValue;
+            clone4.GetComponent<StatHealth>().maxValue = hpMaxValue;
+            clone4.GetComponent<StatHealth>().CurrentValue = hpValue;
 
             GameManager.Instance.enemyList.Add(clone4);
 

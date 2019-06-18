@@ -101,8 +101,7 @@ public class SlotScript : MonoBehaviour, IPointerClickHandler, IClicable,IPointe
     public void RemoveItem(Item item)
     {
         if (!isEmpty)
-        {
-            
+        {           
             InventoryScript.Instance.OnItemCountChanged(items.Pop());
         }
     }
